@@ -1,0 +1,109 @@
+@media only screen and (max-width: 768px) {
+  header .navbar-brand {
+    padding-left: 1rem;
+  }
+
+  header {
+    background-image: url("../assets/Rascunho\ site\ 1.svg");
+    height: 110vh;
+  }
+
+  .texto{
+    margin-top: 80px;
+  }
+
+  .totem img{
+    width: 500px;
+    margin-left: -68PX;
+    margin-top: 70px;
+  }
+
+  .onda{
+  display: none;
+  }
+  
+  .section-1 .row .col-md-6 .panel {
+    position: initial;
+    width: initial;
+    height: initial;
+  }
+
+  .numbers .rect {
+    width: 10rem;
+    height: 8rem;
+  }
+  .numbers .rect h1 {
+    font-size: 2rem;
+  }
+
+  footer .row .col-md-2 {
+    margin-top: 8vmin;
+  }
+}
+
+/* screen size 375px */
+
+@media only screen and (max-width: 375px) {
+  .section-4 .card {
+    width: 18em;
+  }
+
+  .wrapper{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    height: 1200px;
+  }
+
+  .texto-sobre1 {
+    width: 550px;
+    max-width: 100%;
+    padding: 0 10px;
+}
+}
+
+@media only screen and (max-width: 320px) {
+  .section-4 .carousel-inner {
+    margin-left: -4vmin;
+  }
+}
+
+/* SOBRE NÓS PRA BAIXO */
+
+@media screen and (max-width: 1180px){
+  .sobre-nos{
+      width: 100%;
+      height: auto;
+      padding: 70px 0px;
+  }
+
+  .sobre-nos .conteudo-sobre img{
+      margin-bottom: 35px;
+      width: 500px;
+  }
+
+  .texto-sobre h1{
+      font-size: 60px;
+      margin-bottom: 25px;
+  }
+
+  .sobre-nos1{
+      width: 100%;
+      height: auto;
+      padding: 70px 0px;
+  }
+
+  .sobre-nos1 .conteudo-sobre1 img{
+      margin-bottom: 35px;
+      width: 500px;
+  }
+
+  .texto-sobre1 h1{
+      font-size: 60px;
+      margin-bottom: 25px;
+  }
+
+  .nosso-servico{
+      height: 100%;
+  }
+}
