@@ -77,7 +77,7 @@ header .nav-link:hover {
 header {
   background-color: #0B0D1B;
   background-image: url("../assets/Rascunho\ site\ 1.svg");
-  height: 176vh;
+  height: 170vh;
   overflow: hidden;
 }
 
@@ -110,6 +110,8 @@ header {
 .totem{
   margin-top: -120px;
 }
+
+
 
 .onda{
   position: relative;
@@ -352,7 +354,7 @@ footer {
   background: rgba(0, 0, 0, 0.815);
   overflow-x: hidden;
   padding: 14vmin 18vmin;
-  height: 400px;
+  
 }
 
 footer p > span {

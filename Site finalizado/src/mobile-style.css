@@ -5,7 +5,7 @@
 
   header {
     background-image: url("../assets/Rascunho\ site\ 1.svg");
-    height: 110vh;
+    height: 100vh;
   }
 
   .texto{
@@ -13,9 +13,9 @@
   }
 
   .totem img{
-    width: 400px;
+    width: 600px;
     margin-left: -30px;
-    margin-top: 70px;
+    margin-top: 100px;
   }
 
   .onda{
@@ -41,9 +41,15 @@
   }
 }
 
-/* screen size 375px */
+/* IPHONE SE */
 
 @media only screen and (max-width: 375px) {
+  .totem img{
+    width: 50px;
+    margin-left: -10px;
+    margin-top: 100px;
+  }
+
   .section-4 .card {
     width: 18em;
   }
@@ -51,20 +57,85 @@
   .wrapper{
     display: flex;
     flex-direction: column-reverse;
-    align-items: center;
-    height: 1100px;
+    align-items: center; 
+    height: 120vh;
+  }
+
+  .carousel__item{
+   width: 100vw;
+   height: 100px;
+   margin-bottom: 90px;
+  }
+
+  .sobre-footer{
+    display: none;
+  }
+
+  .texto-footer{
+    display: none;
   }
 
   .texto-sobre1 {
-    width: 550px;
+    width: 400px;
     max-width: 100%;
     padding: 0 10px;
 }
 }
 
+@media only screen and (max-width: 360px){
+
+  .totem img{
+    width: 450px;
+    margin-left: -33px;
+    margin-top: 100px;
+  }
+
+}
+
+
+
+
+
+
+
+
 @media only screen and (max-width: 320px) {
   .section-4 .carousel-inner {
     margin-left: -4vmin;
+  }
+
+  
+}
+
+/* IPHONE XR */
+@media screen and (max-width: 414px){
+
+  .totem img{
+    width: 450px;
+    margin-left: -33px;
+    margin-top: 100px;
+  }
+
+  .wrapper{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center; 
+    height: 120vh;
+  }
+
+  .carousel__item{
+    width: 100vw;
+    height: 100px;
+    margin-top: -200px;
+    margin-bottom: 90px;
+   }
+
+   .sobre-footer{
+    display: none;
+  }
+
+  .texto-footer{
+    display: none;
   }
 }
 
