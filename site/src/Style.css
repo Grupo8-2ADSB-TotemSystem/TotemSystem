@@ -13,7 +13,7 @@ section {
 }
 
 :root {
-  --Sniglet-font: "Sniglet", cursive;
+  --Sniglet-font: "Rubik", sans-serif;
   --Rubik: "Rubik", cursive;
   --Patua: "Patua One", cursive;
   --Lobster: "lobster", cursive;
@@ -46,6 +46,7 @@ header a {
 
 .dropdown-content a:hover {
   background-color: #ddd;
+
 }
 
 .dropdown:hover .dropdown-content {
@@ -63,9 +64,14 @@ header .nav-item {
 header .navbar-brand {
   padding-left: 8rem;
 }
+header .navbar-brand:hover {
+  padding-left: 8rem;
+  transition: 0.2s;
+}
 
 header .nav-link:hover {
   color: #5A45FF;
+  transition: 0.5s;
 }
 
 .pagina1{
@@ -73,6 +79,12 @@ header .nav-link:hover {
   flex-direction: column;
   align-items: center;
 }
+
+.logo-home{
+  width: 200px;
+  
+}
+
 
 header {
   background-color: #0B0D1B;
@@ -200,7 +212,7 @@ header {
   background-color: #0B0D1B;
   }
 .sobre-nos1 .conteudo-sobre1 img{
-  width: 350px;
+  width: 280px;
 }
 
 .texto-sobre1{
@@ -267,7 +279,7 @@ header {
 
 .nosso-servico{
   width: 100%;
-  height: 100vh;
+  height: 85vh;
   padding: auto; 
   /* background-image: url("../assets/Group2.png"); */
   overflow: hidden;
@@ -437,7 +449,7 @@ body {
 
 .wrapper {
   background:#2F314B;
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -608,4 +620,18 @@ body {
     opacity: 0;
     visibility: hidden;
   }
+}
+
+/* REVEAL */
+
+.reveal{
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.reveal.active{
+  transform: translateY(0px);
+  opacity: 1;
 }
