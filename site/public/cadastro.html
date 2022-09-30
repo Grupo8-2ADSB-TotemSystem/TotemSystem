@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <title>TotemSystem | Cadastro</title>
+    
+        <script src="./js/funcoes.js"></script>
+    
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="../css/login.css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://kit.fontawesome.com/87b4457a6a.js" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/png" href="../assets/favicon.ico" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:100,200,300,400,500,600,700,800,900"
+            rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/cadastro.css" />
+        <link rel="stylesheet" href="./css/mobile-style.css">
+    </head>
+
+<body>
+
+    <header class="comeco">
+        <div class="container-fluid p-0">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="../src/index.html">
+                    Totem System</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-right text-light"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="mr-auto"></div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">HOME
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#sobre">SOBRE-NÓS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#servicos">NOSSOS SERVIÇOS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="problema.html">SUPORTE PROBLEMA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">LOGIN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cadastro.html">CADASTRO</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+
+        <div class="corpo">
+            <div class="container">
+                <div class="img">
+                    <img src="../assets/telefone.svg">
+                </div>
+                <div id="card1" style="display:block;">
+                    <div class="login-content">
+                        <div class="form">
+                            <h2 class="title">Cadastro</h2>
+                            <div class="input-div one">
+                                <div class="i">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="div">
+                                    <h5>Empresa</h5>
+                                    <input id="empresa_input" type="text" class="input">
+                                </div>
+                            </div>
+                            <div class="input-div pass">
+                                <div class="i">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div class="div">
+                                    <h5>Endereço</h5>
+                                    <input id="endereco_input" type="text" class="input">
+                                </div>
+                            </div>
+                            <div class="input-div pass">
+                                <div class="i">
+                                    <i class="fa-sharp fa-solid fa-train"></i>
+                                </div>
+                                <div class="div">
+                                    <h5>Estação</h5>
+                                    <input id="estacao_input" type="text" class="input">
+                                </div>
+                            </div>
+                            <div class="input-div pass">
+                                <div class="i">
+                                    <i class="fa-solid fa-id-card"></i>
+                                </div>
+                                <div class="div">
+                                    <h5>CNPJ</h5>
+                                    <input id="cnpj_input" type="text" class="input">
+                                </div>
+                            </div>
+                            <div class="ajuste">
+                                <a href="login.html">Já é cadastrado? <br> Faça o login</a>
+                            </div>
+                        </div>
+                        <button onclick="seguir()" class="button">Prosseguir</button>
+                    </div>
+                </div>
+                <div id="card2" style="display:none;">
+                    <div class="login-content">
+                        <div class="form">
+                            <h2 class="title">Cadastro</h2>
+                            <div class="input-div one">
+                                <div class="i">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="div">
+                                    <h5>Nome</h5>
+                                    <input id="nome_input" type="text" class="input">
+                                </div>
+                            </div>
+                            <div class="input-div pass">
+                                <div class="i">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="div">
+                                    <h5>CEP</h5>
+                                    <input id="cep_input" type="text" class="input">
+                                </div>
+                            </div>
+                            <div class="input-div pass">
+                                <div class="i">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="div">
+                                    <h5>Número</h5>
+                                    <input id="num_input" type="text" class="input">
+                                </div>
+                            </div>
+                            <div class="input-div pass">
+                                <div class="i">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="div">
+                                    <h5>Email</h5>
+                                    <input id="email_input" type="text" class="input">
+                                </div>
+                            </div>
+                            <div class="input-div pass">
+                                <div class="i">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="div">
+                                    <h5>Senha</h5>
+                                    <input id="senha_input" type="password" class="input">
+                                </div>
+                                <div class="div">
+                                    <h5>Confirmar Senha</h5>
+                                    <input id="confirmacao_senha_input" type="password" class="input">
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="entrar()" class="button">ENTRAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+</body>
+
+</html>
+<script>
+
+    function cadastrar() {
+        aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var empresaVar = empresa_input.value;
+        var enderecoVar = endereco_input.value;
+        var estacaoVar = estacao_input.value;
+        var cnpjVar = cnpj_input.value;
+        var nomeVar = nome_input.value;
+        var cepVar = cep_input.value;
+        var numeroVar = num_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+    const inputs = document.querySelectorAll(".input");
+
+
+    function addcl() {
+        let parent = this.parentNode.parentNode;
+        parent.classList.add("focus");
+    }
+
+    function remcl() {
+        let parent = this.parentNode.parentNode;
+        if (this.value == "") {
+            parent.classList.remove("focus");
+        }
+    }
+
+
+    inputs.forEach(input => {
+        input.addEventListener("focus", addcl);
+        input.addEventListener("blur", remcl);
+    });
+
+
+</script>

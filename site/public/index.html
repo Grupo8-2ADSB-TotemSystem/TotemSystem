@@ -2,11 +2,13 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Totem System</title>
-  <link rel="icon" type="image/png" href="../assets/favicon.ico" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TotemSystem | Página Inicial</title>
+
+  <script src="./js/funcoes.js"></script>
 
   <script src="https://kit.fontawesome.com/87b4457a6a.js" crossorigin="anonymous"></script>
   <link
@@ -16,8 +18,12 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link rel="stylesheet" href="./Style.css" />
-  <link rel="stylesheet" href="./mobile-style.css">
+  <!-- <link rel="icon" href="./assets/icon/favicon.ico"> -->
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/mobile-style.css">
+  <!-- <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet"> -->
 </head>
 
 <body>
@@ -25,7 +31,7 @@
   <header>
     <div class="container-fluid p-0">
       <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="../src/Index.html">
+        <a class="navbar-brand" href="index.html">
           Totem System</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +41,7 @@
           <div class="mr-auto"></div>
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="../src/Index.html">HOME
+              <a class="nav-link" href="index.html">HOME
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -47,12 +53,12 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="problema.html">SUPORTE PROBLEMA</a>
-          </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Login.html">LOGIN</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Cadastro.html">CADASTRO</a>
+              <a class="nav-link" href="login.html">LOGIN</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cadastro.html">CADASTRO</a>
             </li>
           </ul>
         </div>
@@ -68,9 +74,11 @@
         <p>
           Tenha a melhor experiência de monitoramento do mercado
         </p>
-        <button class="btn btn-light px-5 py-2 primary-btn">
-          CADASTRE-SE
-        </button>
+        <a href="cadastro.html">
+          <button class="btn btn-light px-5 py-2 primary-btn">
+            CADASTRE-SE
+          </button>
+        </a>
       </div>
       <div class="totem">
         <img id="toten" src="../assets/ToTem.svg" alt="" />
@@ -91,8 +99,9 @@
         <div class="texto-sobre reveal">
           <h1>Sobre-nós</h1>
           <h5>Saiba um pouco sobre nosso trabalho</h5>
-          <p>Além de uma Dashboard para analise dos totens de recarga, pensamos principalmente  em melhoramos a experiência dos nossos clientes com uma melhor performance e bom funcionamento dos totens.</p>
-          
+          <p>Além de uma Dashboard para analise dos totens de recarga, pensamos principalmente em melhoramos a
+            experiência dos nossos clientes com uma melhor performance e bom funcionamento dos totens.</p>
+
         </div>
       </div>
     </section>
@@ -101,14 +110,13 @@
       <div class="conteudo-sobre1  ">
         <div class="texto-sobre1 reveal ">
           <h1>Atendimento</h1>
-          <p>Graças ao monitoramento conseguimos proporcionar uma melhor comunicação entre as estações com os totens e os técnicos de manutenção, possibilitando um melhor atendimento e agilidade no serviço.</p>
+          <p>Graças ao monitoramento conseguimos proporcionar uma melhor comunicação entre as estações com os totens e
+            os técnicos de manutenção, possibilitando um melhor atendimento e agilidade no serviço.</p>
 
         </div>
-        <img src="../assets/equipe.png" alt="" id="paginadois" >
+        <img src="../assets/equipe.png" alt="" id="paginadois">
       </div>
     </section>
-
-    
 
     <!-- NOSSOS SERVIÇOS -->
 
@@ -143,11 +151,13 @@
         <div class="texto-sobre1  ">
           <h1>O totem não funciona?</h1>
           <p>Na nossa plataforma o cliente tem voz!!! <br>
-            Se você notou que algum totem está com algum problema, você pode entrar em contato conosco e nós iremos resolver o mais rápido possível.
+            Se você notou que algum totem está com algum problema, você pode entrar em contato conosco e nós iremos
+            resolver o mais rápido possível.
           </p>
-            <button type="button" class="btn btn-light px-5 py-2 primary-btn"> <a style="text-decoration: none; color: #d2d3db;" href="problema.html">Reclame aqui</a> </button>
+          <button type="button" class="btn btn-light px-5 py-2 primary-btn"> <a
+              style="text-decoration: none; color: #d2d3db;" href="problema.html">Reclame aqui</a> </button>
         </div>
-        <img src="../assets/testeteste.png"  alt="" style="width: 400px;" id="paginadois" >
+        <img src="../assets/testeteste.png" alt="" style="width: 400px;" id="paginadois">
       </div>
     </section>
 
@@ -240,7 +250,8 @@
 
       <div class="texto-sobre1 reveal ">
         <h1>Equipe</h1>
-        <p>Uma equipe de desenvolvedores que pensa na melhora e resolução dos problemas com tecnologia, principalmente a inovação e melhora da experiência do usuário.</p>
+        <p>Uma equipe de desenvolvedores que pensa na melhora e resolução dos problemas com tecnologia, principalmente a
+          inovação e melhora da experiência do usuário.</p>
 
       </div>
     </div>
@@ -251,7 +262,7 @@
       <div class="container-fluid p-0">
         <div class="row text-left">
           <div class="col-md-5 col-sm-5">
-            
+
             <p class="pt-4 text-muted">Grupo - 8
               <span>Totem System ©</span>
             </p>
@@ -294,11 +305,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"></script>
-    <script src="./main.js"></script>
+    <!-- <script src="./main.js"></script> -->
 </body>
 
 </html>
-<script src="botao.js"></script>
+<!-- <script src="botao.js"></script> -->
 <script>
   window.addEventListener('scroll', reveal);
 

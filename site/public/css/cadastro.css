@@ -44,7 +44,7 @@
 	margin-right: 80px;
 }
 
-form{
+.form{
 	width: 360px;
 }
 
@@ -191,7 +191,7 @@ a:hover{
 }
 
 @media screen and (max-width: 1000px){
-	form{
+	.form{
 		width: 290px;
 	}
 

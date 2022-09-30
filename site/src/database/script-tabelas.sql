@@ -1,0 +1,8 @@
+CREATE DATABASE totembd;
+
+CREATE TABLE Usuario (
+  idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(60) NULL,
+  email VARCHAR(60) NULL,
+  senha VARCHAR(50) NULL
+);
