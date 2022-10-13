@@ -11,7 +11,7 @@
     <script src="./js/funcoes.js"></script>
 
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/login.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,8 +24,8 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="./css/mobile-style.css">
+    <link rel="stylesheet" href="../public/css/style.css" />
+    <link rel="stylesheet" href="../public/css/mobile-style.css">
 </head>
 
 <body>
@@ -69,10 +69,10 @@
 
 
         <div class="corpo">
-            <img class="wave" src="../assets/wave.png">
+            <img class="wave" src="../public/assets/wave.png">
             <div class="container">
                 <div class="img">
-                    <img style="width: 350px;" src="../assets/business-3d-businessman-generated-a-new-great-idea.png">
+                    <img style="width: 350px;" src="../public/assets/business-3d-businessman-generated-a-new-great-idea.png">
                 </div>
                 <div class="login-content">
                     <div class="form" action="index.html">
@@ -117,12 +117,12 @@
 
         if (emailVar == "" || senhaVar == "") {
             // cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             // finalizarAguardar();
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            // setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -152,7 +152,7 @@
                     sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./dashboard/dashboard.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -162,8 +162,8 @@
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
+                    // console.error(texto);
+                    // finalizarAguardar(texto);
                 });
             }
 
@@ -175,7 +175,7 @@
     }
 
     function sumirMensagem() {
-        cardErro.style.display = "none"
+        // cardErro.style.display = "none"
     }
 
     const inputs = document.querySelectorAll(".input");
