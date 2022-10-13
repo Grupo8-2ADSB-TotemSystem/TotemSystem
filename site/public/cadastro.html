@@ -210,26 +210,50 @@
             iNomeEmpresa.style.color = "#e30b21";
             nomeEmpresa.style.color = "#e30b21";
             console.log("Preencha o nome da empresa");
-        } if (nomeEstacaoVar == "") {
+        }else{
+            iNomeEmpresa.style.color = "#00ff00";
+            nomeEmpresa.style.color = "#00ff00";
+        }
+        if (nomeEstacaoVar == "") {
             iEstacao.style.color = "#e30b21";
             nomeEstacao.style.color = "#e30b21";
             console.log("Preencha o campo da estação");
-        } if (cnpjVar == "") {
+        }else{
+            iEstacao.style.color = "#00ff00";
+            nomeEstacao.style.color = "#00ff00";
+        }
+        if (cnpjVar == "") {
             iCNPJ.style.color = "#e30b21";
             cnpj.style.color = "#e30b21";
             console.log("Preencha o cnpj");  
-        } if (cepVar == "") {
+        }else{  
+            iCNPJ.style.color = "#00ff00";
+            cnpj.style.color = "#00ff00";
+        }
+        if (cepVar == "") {
             iCEP.style.color = "#e30b21";
             cep.style.color = "#e30b21";
             console.log("Preencha o nome da empresa");
-        } if (numeroVar == "") {
+        }else{
+            iCEP.style.color = "#00ff00";
+            cep.style.color = "#00ff00";
+        } 
+        if (numeroVar == "") {
             iNumero.style.color = "#e30b21";
             numero.style.color = "#e30b21";
             console.log("Preencha o nome da empresa");
-        } else {
-            card1.style.display = "none";
-            card2.style.display = "block";
+        }else{
+            iNumero.style.color = "#00ff00";
+            numero.style.color = "#00ff00";
+            onc
         }
+         if (nomeEmpresaVar != "" && nomeEstacaoVar != "" && cnpjVar != "" && cepVar != "" && numeroVar != "") {
+            document.getElementById("card1").style.display = "none";
+            document.getElementById("card2").style.display = "block";
+            
+
+        }
+        
     }
 
     function cadastrar() {
@@ -245,20 +269,36 @@
         if (nomeUsuarioVar == "") {
             iNomeUsuario.style.color = "#e30b21";
             nomeUsuario.style.color = "#e30b21";
-            console.log("Preencha o nome");
-        } if (emailVar == "") {
+           
+        }else{
+            iNomeUsuario.style.color = "#00ff00";
+            nomeUsuario.style.color = "#00ff00";
+        }
+        if (emailVar == "") {
             iEmail.style.color = "#e30b21";
             email.style.color = "#e30b21";
             console.log("Preencha com o seu e-mail");
-        } if (senhaVar == "") {
+        }else{
+            iEmail.style.color = "#00ff00";
+            email.style.color = "#00ff00";
+        } 
+        if (senhaVar == "") {
             iSenha.style.color = "#e30b21";
             senha.style.color = "#e30b21";
             console.log("Preencha a senha");  
-        } if (confirmacaoSenhaVar == "") {
+        }else{
+            iSenha.style.color = "#00ff00";
+            senha.style.color = "#00ff00";
+        }
+        if (confirmacaoSenhaVar == "") {
             iConfSenha.style.color = "#e30b21";
             confSenha.style.color = "#e30b21";
             console.log("Preencha a confirmação da senha");
-        } 
+        }else{
+            iConfSenha.style.color = "#00ff00";
+            confSenha.style.color = "#00ff00";
+        }
+        
 
         if (emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
             // cardErro.style.display = "block"
