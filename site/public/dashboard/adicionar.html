@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="dashboard.html">
+                    <a href="dash-gerente.html">
                         <span class="icon">
                             <ion-icon name="stats-chart"></ion-icon>
                         </span>
@@ -34,27 +34,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Totem.html">
+                    <a href="adicionar.html">
                         <span class="icon">
                             <ion-icon name="laptop-outline"></ion-icon>
                         </span>
-                        <span class="title">Totens</span>
+                        <span class="title">Adicionar Usuário</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <ion-icon name="archive"></ion-icon>
-                        </span>
-                        <span class="title">Histórico</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onclick="limparSessao()">
-                        <span class="icon">
                             <ion-icon name="log-out"></ion-icon>
                         </span>
-                        <span class="title" >Sair</span>
+                        <span class="title">Sair</span>
                     </a>
                 </li>
             </ul>
@@ -71,53 +63,26 @@
                     <img src="../assets/imgs/download.png" alt="">
                 </div>
             </div>
+            <h1 class="ativo">Adicionar Dependente</h1>
             <!-- CARDS -->
             <div class="cardBox">
-                <div class="card">
-                    <div>
-                        <div class="numbers">XX</div>
-                        <div class="cardName">Totens Funcionando</div>
-                    </div>
-                    <div class="iconBox">
-                        <ion-icon name="checkmark-circle-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="card">
-                    <div>
-                        <div class="numbers">XX</div>
-                        <div class="cardName">Totens Danificados</div>
-                    </div>
-                    <div class="iconBox">
-                        <ion-icon name="warning-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="card">
-                    <div>
-                        <div class="numbers">XX</div>
-                        <div class="cardName">Totens Desativados</div>
-                    </div>
-                    <div class="iconBox">
-                        <ion-icon name="battery-dead-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="card">
-                    <div>
-                        <div class="numbers">XX</div>
-                        <div class="cardName">Totens em Manutenção</div>
-                    </div>
-                    <div class="iconBox">
-                        <ion-icon name="build-outline"></ion-icon>
-                    </div>
-                </div>
-            </div>
-            <!-- CHART.JS -->
-            <div class="graphBox">
-                <div class="box">
-                    <canvas id="myChart"></canvas>
-                </div>
-                <div class="box">
-                    <canvas id="barril"></canvas>
-                </div>
+                <div class="wrapper fadeInDown">
+  
+                    <div class="content-login">
+                        <h2 class="active"> Formulário </h2>
+                        <form class="box-login" method="post" action="#">
+                          <input type="text" id="nome" class="campo" name="email" placeholder="Nome completo">
+                          <input type="text" id="id" class="campo" name="senha" placeholder="ID do representante">
+                          <input type="date" id="data" class="campo" name="senha" placeholder="Data de Nascimento">
+                          <input type="number" id="cpf" class="campo" name="senha" placeholder="CPF">
+                          <input type="email" id="email" class="campo" name="senha" placeholder="Email">
+                          <input type="password" id="password" class="campo" name="senha" placeholder="Senha">
+                          
+                          <input type="submit" class="botao" value="Adicionar">
+                        </form>
+                        
+                    </div><!--Form Content-->
+                  </div>
             </div>
         </div>
     </div>
@@ -125,27 +90,7 @@
     <script script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"> </script>
     <script script nomodule src="https://unpkg .com/ionicons@5.5.2/dist/ionicons/ionicons.js"> </script>
 
-    
-    
-    <!-- GRÁFICO DE BARRA -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-    <script src="../graficos/chartbar.js"></script>
-    <!-- GRÁFICO POLAR -->
-    <script src="../graficos/chartpolar.js"></script>
-
     <script>
-
-        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-        function limparSessao() {
-            // aguardar();
-            sessionStorage.clear();
-            // finalizarAguardar();
-            window.location = "../login.html";
-        }
-
-
-
         // Menu Toggle
         let toggle = document.querySelector('.toggle');
         let navigation = document.querySelector('.navigation');
@@ -167,6 +112,7 @@
         list.forEach((item) =>
             item.addEventListener('mouseover', activelink));
     </script>
+
 </body>
 
 </html>
