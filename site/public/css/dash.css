@@ -255,14 +255,291 @@ body {
 
 /* PÁGINA TOTEM */
 
-.ativo{
+.ativo {
     display: flex;
     justify-content: center;
+}
+
+/* Formulario-AddTotem */
+
+.container-formulario {
+    margin-top: 20%;
+    background-color: #ffffff;
+    width: 95%;
+    min-width: 420px;
+    padding: 35px 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 10px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.18);
+}
+
+.h1-formulario {
+    font-size: 30px;
+    text-align: center;
+    color: black;
+}
+
+.p-formulario {
+    position: relative;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    color: #606060;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+form {
+    width: 100%;
+    position: relative;
+    margin: 30px auto 0 auto;
+}
+
+.row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px 30px;
+    margin-bottom: 20px;
+}
+
+label {
+    color: #1c093c;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    font-weight: 400;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 1.2px solid #c4cae0;
+    margin-top: 5px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #5A45FF;
+}
+
+.botao-form {
+    border: none;
+    padding: 10px 20px;
+    background: linear-gradient(130deg, #6f6df4, #4c46f5);
+    color: #ffffff;
+    border-radius: 3px;
+}
+
+/* ADICIONAR DEPENDENTES */
+
+h2 {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #0d0d0d;
+    border-bottom: 1px solid #f6f6f6;
+    padding: 15px 15px;
+    width: 100%;
+    float: left;
+}
+
+.wrapper {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-left: 150%;
+    min-height: 100%;
+}
+
+.content-login {
+    -webkit-border-radius: 4px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    width: 500%;
+    max-width: 320px;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.box-login {
+
+    width: 100%;
+    float: left;
+    padding: 10px;
+
+}
+
+.box-lembrar-senha {
+    width: 100%;
+    float: left;
+    background-color: #f6f6f6;
+    border-top: 1px solid #dce8f1;
+    padding: 25px;
+    text-align: center;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+.botao {
+
+    width: 100%;
+    display: block;
+    float: left;
+    background-color: #5A45FF;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 15px 80px;
+    text-align: center;
+    font-size: 18px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.botao:hover {
+    background-color: #404040;
+}
+
+.campo {
+
+    background-color: #f6f6f6;
+    border: none;
+    outline: none;
+    color: #0d0d0d;
+    padding: 10px 5px;
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 2px solid #f6f6f6;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    float: left;
+    transition: 0.3s;
+}
+
+.campo:focus {
+
+    background-color: #fff;
+    color: #5A45FF;
+}
+
+.campo:placeholder {
+    color: #cccccc;
+}
+
+.link {
+
+    color: #5A45FF;
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.link:hover {
+    color: #404040;
+}
+
+/* Animação */
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+/* Animação Fade-in*/
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    opacity: 0;
+    -webkit-animation: fadeIn ease-in 1;
+    -moz-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    animation-duration: 2s;
 }
 
 /* RESPONSIVIDADE */
 
 @media (max-width: 991px) {
+
+    .container-formulario {
+        margin-top: 15%;
+    }
 
     .graphBox {
         grid-template-columns: 1fr;
@@ -292,202 +569,11 @@ body {
     }
 }
 
-h2 {
-    text-align: center;
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: #0d0d0d;
-    border-bottom: 1px solid #f6f6f6;
-    padding: 15px 15px;
-    width: 100%;
-    float: left;
-  }
-  .wrapper {
-    
-    display: flex;
-    align-items: center;
-    flex-direction: column; 
-    justify-content: center;
-    width: 100%;
-    margin-left: 150%;
-    min-height: 100%;
-  }
-  .content-login {
-    -webkit-border-radius: 4px;
-    border-radius: 10px 10px 10px 10px;
-    background: #fff;
-    padding: 30px;
-    width: 500%;
-    max-width: 320px;
-    position: relative;
-    padding: 0px;
-    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    text-align: center;
-  }
-  .box-login { 
-    
-    width: 100%;
-    float: left;
-    padding: 10px;
-   
-  }
-  .box-lembrar-senha {
-    width:100%;
-    float:left;
-    background-color: #f6f6f6;
-    border-top: 1px solid #dce8f1;
-    padding: 25px;
-    text-align: center;
-    -webkit-border-radius: 0 0 10px 10px;
-    border-radius: 0 0 10px 10px;
-  }
-  .botao {
-    
-    width:100%;
-    display: block;
-    float:left;
-    background-color: #5A45FF;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    padding: 15px 80px;
-    text-align: center;
-    font-size:18px;
-    -webkit-border-radius:4px;
-    border-radius:4px;
-    transition: 0.3s;
-  }
-  .botao:hover  { background-color: #404040; }
-  .campo {
-    
-    background-color: #f6f6f6;
-    border: none;
-    outline: none;
-    color: #0d0d0d;
-    padding: 10px 5px;
-    text-decoration: none;
-    font-size: 16px;
-    margin-bottom: 10px;
-    width: 100%;
-    border: 2px solid #f6f6f6;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
-    float: left;
-    transition: 0.3s;
-  }
-  .campo:focus {
-   
-    background-color: #fff;
-    color:#5A45FF;
-  }
-  .campo:placeholder {
-    color: #cccccc;
-  }
-  .link {
-      
-    color: #5A45FF;
-    display:inline-block;
-    text-decoration: none;
-    transition: 0.3s;
-  }
-  .link:hover { color:#404040; }
-  /* Animação */
-  .fadeInDown {
-    -webkit-animation-name: fadeInDown;
-    animation-name: fadeInDown;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-  }
-  @-webkit-keyframes fadeInDown {
-    0% {
-      opacity: 0;
-      -webkit-transform: translate3d(0, -100%, 0);
-      transform: translate3d(0, -100%, 0);
-    }
-    100% {
-      opacity: 1;
-      -webkit-transform: none;
-      transform: none;
-    }
-  }
-  @keyframes fadeInDown {
-    0% {
-      opacity: 0;
-      -webkit-transform: translate3d(0, -100%, 0);
-      transform: translate3d(0, -100%, 0);
-    }
-    100% {
-      opacity: 1;
-      -webkit-transform: none;
-      transform: none;
-    }
-  }
-  /* Animação Fade-in*/
-  @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-  @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-  .fadeIn {
-    opacity:0;
-    -webkit-animation:fadeIn ease-in 1;
-    -moz-animation:fadeIn ease-in 1;
-    animation:fadeIn ease-in 1;
-    -webkit-animation-fill-mode:forwards;
-    -moz-animation-fill-mode:forwards;
-    animation-fill-mode:forwards;
-    -webkit-animation-duration:2s;
-    -moz-animation-duration:2s;
-    animation-duration:2s;
-  }
-
-  /* Formulario-AddTotem */
-
-  .container-formulario{
-    margin-top: 15%;
-    background-color: #ffffff;
-    width: 95%;
-    min-width: 420px;
-    padding: 35px 50px;
-    transform:  translate(-50%, -50%);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    border-radius: 10px;
-    box-shadow: 20px 30px 25px  rgba(0,0,0,0.15);
-  }
-
-  .h1-formulario{
-    font-size: 30px;
-    text-align: center;
-    color: #1c093c;
-  }
-
-  .p-formulario{
-    position: relative;
-    margin: auto;
-    width: 100%;
-    text-align: center;
-    color: #606060;
-    font-size: 14px;
-    font-weight: 400;
-  }
-
-  .formulario{
-    width: 100%;
-    position: relative;
-    margin: 30px auto 0 auto;
-  }
-
-  .row{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-
-
 @media (max-width: 490px) {
+    .container-formulario {
+        margin-top: 95%;
+    }
+
     .cardBox {
         grid-template-columns: repeat(1, 1fr);
     }

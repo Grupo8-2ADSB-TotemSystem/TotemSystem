@@ -36,7 +36,7 @@
                 <li>
                     <a href="adicionar.html">
                         <span class="icon">
-                            <ion-icon name="laptop-outline"></ion-icon>
+                            <ion-icon name="person-add-outline"></ion-icon>
                         </span>
                         <span class="title">Adicionar Usuário</span>
                     </a>
@@ -46,7 +46,7 @@
                         <span class="icon">
                             <ion-icon name="log-out"></ion-icon>
                         </span>
-                        <span class="title" >Sair</span>
+                        <span class="title">Sair</span>
                     </a>
                 </li>
             </ul>
@@ -117,8 +117,8 @@
     <script script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"> </script>
     <script script nomodule src="https://unpkg .com/ionicons@5.5.2/dist/ionicons/ionicons.js"> </script>
 
-    
-    
+
+
     <!-- GRÁFICO DE BARRA -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <script src="../graficos/chartbar.js"></script>
@@ -127,14 +127,6 @@
 
     <script>
 
-        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-        function limparSessao() {
-            // aguardar();
-            sessionStorage.clear();
-            // finalizarAguardar();
-            window.location = "../login.html";
-        }
 
 
 
@@ -158,6 +150,15 @@
         }
         list.forEach((item) =>
             item.addEventListener('mouseover', activelink));
+
+        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+        function limparSessao() {
+            // aguardar();
+            sessionStorage.clear();
+            // finalizarAguardar();
+            window.location = "../login.html";
+        }
     </script>
 </body>
 
