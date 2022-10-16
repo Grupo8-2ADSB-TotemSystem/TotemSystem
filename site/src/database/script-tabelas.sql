@@ -30,6 +30,7 @@ create table usuario(
     nomeUsuario varchar(45),
     email varchar(60),
     senha varchar(50),
+    tipoUsuario int,
     foreign key (fkEmpresa) references empresa(idEmpresa)
 );
 
