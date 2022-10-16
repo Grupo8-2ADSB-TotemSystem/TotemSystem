@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Adicionar</title>
+    <title>Adicionar Usuário</title>
 </head>
 
 <body>
@@ -36,13 +36,13 @@
                 <li>
                     <a href="adicionar.html">
                         <span class="icon">
-                            <ion-icon name="laptop-outline"></ion-icon>
+                            <ion-icon name="person-add-outline"></ion-icon>
                         </span>
                         <span class="title">Adicionar Usuário</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" onclick="limparSessao()">
                         <span class="icon">
                             <ion-icon name="log-out"></ion-icon>
                         </span>
@@ -67,22 +67,23 @@
             <!-- CARDS -->
             <div class="cardBox">
                 <div class="wrapper fadeInDown">
-  
+
                     <div class="content-login">
                         <h2 class="active"> Formulário </h2>
                         <form class="box-login" method="post" action="#">
-                          <input type="text" id="nome" class="campo" name="email" placeholder="Nome completo">
-                          <input type="text" id="id" class="campo" name="senha" placeholder="ID do representante">
-                          <input type="date" id="data" class="campo" name="senha" placeholder="Data de Nascimento">
-                          <input type="number" id="cpf" class="campo" name="senha" placeholder="CPF">
-                          <input type="email" id="email" class="campo" name="senha" placeholder="Email">
-                          <input type="password" id="senha" class="campo" name="senha" placeholder="Senha">
-                          
-                          <input type="submit" class="botao" value="Adicionar">
+                            <input type="text" id="nome" class="campo" name="email" placeholder="Nome completo">
+                            <input type="text" id="id" class="campo" name="senha" placeholder="ID do representante">
+                            <input type="date" id="data" class="campo" name="senha" placeholder="Data de Nascimento">
+                            <input type="number" id="cpf" class="campo" name="senha" placeholder="CPF">
+                            <input type="email" id="email" class="campo" name="senha" placeholder="Email">
+                            <input type="password" id="senha" class="campo" name="senha" placeholder="Senha">
+
+                            <input type="submit" class="botao" value="Adicionar">
                         </form>
-                        
-                    </div><!--Form Content-->
-                  </div>
+
+                    </div>
+                    <!--Form Content-->
+                </div>
             </div>
         </div>
     </div>
@@ -111,6 +112,15 @@
         }
         list.forEach((item) =>
             item.addEventListener('mouseover', activelink));
+
+        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+        function limparSessao() {
+            // aguardar();
+            sessionStorage.clear();
+            // finalizarAguardar();
+            window.location = "../login.html";
+        }
     </script>
 
 </body>
