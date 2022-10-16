@@ -249,8 +249,6 @@
          if (nomeEmpresaVar != "" && nomeEstacaoVar != "" && cnpjVar != "" && cepVar != "" && numeroVar != "") {
             document.getElementById("card1").style.display = "none";
             document.getElementById("card2").style.display = "block";
-            
-
         }
         
     }
@@ -341,6 +339,7 @@
                 numeroServer: numeroVar,
                 emailServer: emailVar,
                 senhaServer: senhaVar,
+                tipoUsuarioServer: 1,
             })
         }).then(function (resposta) {
 

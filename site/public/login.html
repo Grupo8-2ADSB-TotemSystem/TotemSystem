@@ -149,12 +149,19 @@
 
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.TIPO_USUARIO = json.tipoUsuario;
+                    sessionStorage.FK_EMPRESA = json.fkEmpresa;
                     sessionStorage.ID_USUARIO = json.id;
 
-                    setTimeout(function () {
-                        window.location = "./Dashboard-gerente/dash-gerente.html";
-                    }, 1000); // apenas para exibir o loading
-
+                    if (JSON.stringify(json.tipoUsuario) == 1) {
+                        setTimeout(function () {
+                            window.location = "./Dashboard-gerente/dash-gerente.html";
+                        }, 1000);
+                    } else {
+                        setTimeout(function () {
+                            window.location = "./dashboard-funcionário/dashboard.html";
+                        }, 1000);
+                    }
                 });
 
             } else {

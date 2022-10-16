@@ -70,6 +70,7 @@ async function cadastrar(req, res) {
     var numero = req.body.numeroServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var tipoUsuario = req.body.tipoUsuarioServer;
     var fkEndereco;
     var fkEstacao;
     var fkEmpresa;
@@ -138,7 +139,41 @@ async function cadastrar(req, res) {
         }
 
         try {
-            usuarioModel.cadastrarUsuario(fkEmpresa, nomeUsuario, email, senha);
+            usuarioModel.cadastrarUsuario(fkEmpresa, nomeUsuario, email, senha, tipoUsuario);
+        } catch (erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro ao realizar o cadastro! Erro: ",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+
+        finalizarCadastro();
+    }
+}
+
+async function cadastrarDependente(req, res) {
+    var nomeUsuario = req.body.nomeUsuarioServer.toUpperCase();
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
+    var tipoUsuario = req.body.tipoUsuarioServer;
+    var fkEmpresa = req.body.fkEmpresaServer;
+
+    function finalizarCadastro(resultado) {
+        res.json(resultado);
+    }
+
+    if (nomeUsuario == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else {
+
+        try {
+            usuarioModel.cadastrarUsuario(fkEmpresa, nomeUsuario, email, senha, tipoUsuario);
         } catch (erro) {
             console.log(erro);
             console.log(
@@ -155,6 +190,7 @@ async function cadastrar(req, res) {
 module.exports = {
     entrar,
     cadastrar,
+    cadastrarDependente,
     listar,
     testar
 }
