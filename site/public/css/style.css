@@ -66,6 +66,7 @@ header .navbar-brand {
 }
 header .navbar-brand:hover {
   padding-left: 8rem;
+  color: #5A45FF;
   transition: 0.2s;
 }
 

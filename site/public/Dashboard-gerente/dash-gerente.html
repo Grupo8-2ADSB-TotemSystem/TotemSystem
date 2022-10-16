@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/dash.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Dashboard Gerente</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="home"></ion-icon>
+                        </span>
+                        <span class="title">Totem System</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="dash-gerente.html">
+                        <span class="icon">
+                            <ion-icon name="stats-chart"></ion-icon>
+                        </span>
+                        <span class="title">Gráficos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adicionar.html">
+                        <span class="icon">
+                            <ion-icon name="laptop-outline"></ion-icon>
+                        </span>
+                        <span class="title">Adicionar Usuário</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="limparSessao()">
+                        <span class="icon">
+                            <ion-icon name="log-out"></ion-icon>
+                        </span>
+                        <span class="title" >Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- MAIN -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+                <!-- USUARIO -->
+                <div class="user">
+                    <img src="../assets/imgs/download.png" alt="">
+                </div>
+            </div>
+            <!-- CARDS -->
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">XX</div>
+                        <div class="cardName">Totens Funcionando</div>
+                    </div>
+                    <div class="iconBox">
+                        <ion-icon name="checkmark-circle-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">XX</div>
+                        <div class="cardName">Totens Danificados</div>
+                    </div>
+                    <div class="iconBox">
+                        <ion-icon name="warning-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">XX</div>
+                        <div class="cardName">Totens Desativados</div>
+                    </div>
+                    <div class="iconBox">
+                        <ion-icon name="battery-dead-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">XX</div>
+                        <div class="cardName">Totens em Manutenção</div>
+                    </div>
+                    <div class="iconBox">
+                        <ion-icon name="build-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+            <!-- CHART.JS -->
+            <div class="graphBox">
+                <div class="box">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="box">
+                    <canvas id="barril"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"> </script>
+    <script script nomodule src="https://unpkg .com/ionicons@5.5.2/dist/ionicons/ionicons.js"> </script>
+
+    
+    
+    <!-- GRÁFICO DE BARRA -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="../graficos/chartbar.js"></script>
+    <!-- GRÁFICO POLAR -->
+    <script src="../graficos/chartpolar.js"></script>
+
+    <script>
+
+        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+        function limparSessao() {
+            // aguardar();
+            sessionStorage.clear();
+            // finalizarAguardar();
+            window.location = "../login.html";
+        }
+
+
+
+        // Menu Toggle
+        let toggle = document.querySelector('.toggle');
+        let navigation = document.querySelector('.navigation');
+        let main = document.querySelector('.main');
+
+        toggle.onclick = function () {
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
+
+
+        // adicionando o hover no menu selecionado
+        let list = document.querySelectorAll(".navigation li");
+        function activelink() {
+            list.forEach((item) =>
+                item.classList.remove('hovered'));
+            this.classList.add('hovered');
+        }
+        list.forEach((item) =>
+            item.addEventListener('mouseover', activelink));
+    </script>
+</body>
+
+</html>

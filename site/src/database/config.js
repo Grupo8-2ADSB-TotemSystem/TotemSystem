@@ -1,25 +1,28 @@
+var mysql = require("mysql2");
+var sql = require('mssql');
+
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
-// var sqlServerConfig = {
-//     user: "admin-1adsb-grupo03",
-//     password: "#Gfgrupo3",
-//     database: "grupo3-agrohcompany",
-//     server: "svr-1adsb-grupo3.database.windows.net",
-//     pool: {
-//         max: 10,
-//         min: 0,
-//         idleTimeoutMillis: 30000
-//     },
-//     options: {
-//         encrypt: true, // for azure
-//     }
-// }
+ var sqlServerConfig = {
+     user: "admin-1adsb-grupo03",
+     password: "#Gfgrupo3",
+     database: "grupo3-agrohcompany",
+     server: "svr-1adsb-grupo3.database.windows.net",
+     pool: {
+         max: 10,
+         min: 0,
+         idleTimeoutMillis: 30000
+     },
+     options: {
+         encrypt: true, // for azure
+     }
+ }
 
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
 var mySqlConfig = {
     host: "localhost",
     user: "root",
     database: "totembd",
-    password: "urubu100",
+    password: "urubuadmin100",
 };
 
 function executar(instrucao) {

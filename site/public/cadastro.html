@@ -1,40 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-        <title>TotemSystem | Cadastro</title>
-    
-        <script src="./js/funcoes.js"></script>
-    
-        <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="../css/login.css">
-        <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://kit.fontawesome.com/87b4457a6a.js" crossorigin="anonymous"></script>
-        <link rel="icon" type="image/png" href="../assets/favicon.ico" />
-        <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:100,200,300,400,500,600,700,800,900"
-            rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <link rel="stylesheet" href="../css/style.css" />
-        <link rel="stylesheet" href="../css/cadastro.css" />
-        <link rel="stylesheet" href="./css/mobile-style.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TotemSystem | Login</title>
+
+    <script src="./js/funcoes.js"></script>
+
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/87b4457a6a.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="../assets/favicon.ico" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:100,200,300,400,500,600,700,800,900"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/cadastro.css" />
+    <link rel="stylesheet" href="../css/mobile-style.css">
+</head>
 
 <body>
-
     <header class="comeco">
         <div class="container-fluid p-0">
             <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="../src/index.html">
+                <a class="navbar-brand" href="index.html">
                     Totem System</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,9 +67,17 @@
             </nav>
         </div>
 
-
-        <div class="corpo">
-            <div class="container">
+        <div id="corpo" class="corpo">
+            <div id="sucesso" class="container-sucesso" style="display:none;">
+                <h2 class="title">CADASTRO REALIZADO COM SUCESSO !</h2>
+                <h5>Faça o login para continuar</h5>
+                <div class="wrapper"> <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                    </svg>
+                </div>
+            </div>
+            <div id="container" class="container">
                 <div class="img">
                     <img src="../assets/telefone.svg">
                 </div>
@@ -79,41 +86,52 @@
                         <div class="form">
                             <h2 class="title">Cadastro</h2>
                             <div class="input-div one">
-                                <div class="i">
+                                <div id="iNomeEmpresa" class="i">
                                     <i class="fas fa-user"></i>
                                 </div>
                                 <div class="div">
-                                    <h5>Empresa</h5>
-                                    <input id="empresa_input" type="text" class="input">
+                                    <h5 id="nomeEmpresa">Nome Empresa</h5>
+                                    <input id="nomeEmpresa_input" type="text" class="input">
                                 </div>
                             </div>
                             <div class="input-div pass">
-                                <div class="i">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <div class="div">
-                                    <h5>Endereço</h5>
-                                    <input id="endereco_input" type="text" class="input">
-                                </div>
-                            </div>
-                            <div class="input-div pass">
-                                <div class="i">
-                                    <i class="fa-sharp fa-solid fa-train"></i>
-                                </div>
-                                <div class="div">
-                                    <h5>Estação</h5>
-                                    <input id="estacao_input" type="text" class="input">
-                                </div>
-                            </div>
-                            <div class="input-div pass">
-                                <div class="i">
+                                <div id="iCNPJ" class="i">
                                     <i class="fa-solid fa-id-card"></i>
                                 </div>
                                 <div class="div">
-                                    <h5>CNPJ</h5>
-                                    <input id="cnpj_input" type="text" class="input">
+                                    <h5 id="cnpj">CNPJ</h5>
+                                    <input id="cnpj_input" type="text" class="input" maxlength="14">
                                 </div>
                             </div>
+                            <div class="input-div pass">
+                                <div id="iCEP"class="i">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="div">
+                                    <h5 id="cep">CEP</h5>
+                                    <input id="cep_input" type="text" class="input" maxlength="8">
+                                </div>
+                            </div>
+                            <div class="input-div pass">
+                                <div id="iNumero" class="i">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="div">
+                                    <h5 id="numero">Número</h5>
+                                    <input id="num_input" type="text" class="input">
+                                </div>
+                            </div>
+                            <div class="input-div pass">
+                                <div id="iEstacao" class="i">
+                                    <i class="fa-sharp fa-solid fa-train"></i>
+                                </div>
+                                <div class="div">
+                                    <h5 id="nomeEstacao">Estação</h5>
+                                    <input id="nomeEstacao_input" type="text" class="input">
+                                </div>
+                            </div>
+
+
                             <div class="ajuste">
                                 <a href="login.html">Já é cadastrado? <br> Faça o login</a>
                             </div>
@@ -126,56 +144,43 @@
                         <div class="form">
                             <h2 class="title">Cadastro</h2>
                             <div class="input-div one">
-                                <div class="i">
+                                <div id="iNomeUsuario" class="i">
                                     <i class="fas fa-user"></i>
                                 </div>
                                 <div class="div">
-                                    <h5>Nome</h5>
-                                    <input id="nome_input" type="text" class="input">
+                                    <h5 id="nomeUsuario">Nome</h5>
+                                    <input id="nomeUsuario_input" type="text" class="input">
                                 </div>
                             </div>
                             <div class="input-div pass">
-                                <div class="i">
+                                <div id="iEmail" class="i">
                                     <i class="fas fa-lock"></i>
                                 </div>
                                 <div class="div">
-                                    <h5>CEP</h5>
-                                    <input id="cep_input" type="text" class="input">
-                                </div>
-                            </div>
-                            <div class="input-div pass">
-                                <div class="i">
-                                    <i class="fas fa-lock"></i>
-                                </div>
-                                <div class="div">
-                                    <h5>Número</h5>
-                                    <input id="num_input" type="text" class="input">
-                                </div>
-                            </div>
-                            <div class="input-div pass">
-                                <div class="i">
-                                    <i class="fas fa-lock"></i>
-                                </div>
-                                <div class="div">
-                                    <h5>Email</h5>
+                                    <h5 id="email">Email</h5>
                                     <input id="email_input" type="text" class="input">
                                 </div>
                             </div>
                             <div class="input-div pass">
-                                <div class="i">
+                                <div id="iSenha" class="i">
                                     <i class="fas fa-lock"></i>
                                 </div>
                                 <div class="div">
-                                    <h5>Senha</h5>
+                                    <h5 id="senha">Senha</h5>
                                     <input id="senha_input" type="password" class="input">
                                 </div>
+                            </div>
+                            <div class="input-div pass">
+                                <div id="iConfSenha" class="i">
+                                    <i class="fas fa-lock"></i>
+                                </div>
                                 <div class="div">
-                                    <h5>Confirmar Senha</h5>
+                                    <h5 id="confSenha">Confirmar Senha</h5>
                                     <input id="confirmacao_senha_input" type="password" class="input">
                                 </div>
                             </div>
                         </div>
-                        <button onclick="entrar()" class="button">ENTRAR</button>
+                        <button onclick="cadastrar()" class="button">CADASTRAR</button>
                     </div>
                 </div>
             </div>
@@ -187,32 +192,134 @@
 </html>
 <script>
 
+    var nomeEmpresaVar;
+    var enderecoVar;
+    var nomeEstacaoVar;
+    var cnpjVar;
+    var cepVar;
+    var numeroVar;
+
+    function seguir() {
+        nomeEmpresaVar = nomeEmpresa_input.value;
+        nomeEstacaoVar = nomeEstacao_input.value;
+        cnpjVar = cnpj_input.value;
+        cepVar = cep_input.value;
+        numeroVar = num_input.value;
+
+        if (nomeEmpresaVar == "") {
+            iNomeEmpresa.style.color = "#e30b21";
+            nomeEmpresa.style.color = "#e30b21";
+            console.log("Preencha o nome da empresa");
+        }else{
+            iNomeEmpresa.style.color = "#00ff00";
+            nomeEmpresa.style.color = "#00ff00";
+        }
+        if (nomeEstacaoVar == "") {
+            iEstacao.style.color = "#e30b21";
+            nomeEstacao.style.color = "#e30b21";
+            console.log("Preencha o campo da estação");
+        }else{
+            iEstacao.style.color = "#00ff00";
+            nomeEstacao.style.color = "#00ff00";
+        }
+        if (cnpjVar == "") {
+            iCNPJ.style.color = "#e30b21";
+            cnpj.style.color = "#e30b21";
+            console.log("Preencha o cnpj");  
+        }else{  
+            iCNPJ.style.color = "#00ff00";
+            cnpj.style.color = "#00ff00";
+        }
+        if (cepVar == "") {
+            iCEP.style.color = "#e30b21";
+            cep.style.color = "#e30b21";
+            console.log("Preencha o nome da empresa");
+        }else{
+            iCEP.style.color = "#00ff00";
+            cep.style.color = "#00ff00";
+        } 
+        if (numeroVar == "") {
+            iNumero.style.color = "#e30b21";
+            numero.style.color = "#e30b21";
+            console.log("Preencha o nome da empresa");
+        }else{
+            iNumero.style.color = "#00ff00";
+            numero.style.color = "#00ff00";
+        }
+         if (nomeEmpresaVar != "" && nomeEstacaoVar != "" && cnpjVar != "" && cepVar != "" && numeroVar != "") {
+            document.getElementById("card1").style.display = "none";
+            document.getElementById("card2").style.display = "block";
+        }
+        
+    }
+
     function cadastrar() {
-        aguardar();
+        // aguardar();
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
-        var empresaVar = empresa_input.value;
-        var enderecoVar = endereco_input.value;
-        var estacaoVar = estacao_input.value;
-        var cnpjVar = cnpj_input.value;
-        var nomeVar = nome_input.value;
-        var cepVar = cep_input.value;
-        var numeroVar = num_input.value;
+        var nomeUsuarioVar = nomeUsuario_input.value;
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        if (nomeUsuarioVar == "") {
+            iNomeUsuario.style.color = "#e30b21";
+            nomeUsuario.style.color = "#e30b21";
+           
+        }else{
+            iNomeUsuario.style.color = "#00ff00";
+            nomeUsuario.style.color = "#00ff00";
+        }
+        if (emailVar == "") {
+            iEmail.style.color = "#e30b21";
+            email.style.color = "#e30b21";
+            console.log("Preencha com o seu e-mail");
+        }else{
+            iEmail.style.color = "#00ff00";
+            email.style.color = "#00ff00";
+        } 
+        if (senhaVar == "") {
+            iSenha.style.color = "#e30b21";
+            senha.style.color = "#e30b21";
+            console.log("Preencha a senha");  
+        }else{
+            iSenha.style.color = "#00ff00";
+            senha.style.color = "#00ff00";
+        }
+        if (confirmacaoSenhaVar == "") {
+            iConfSenha.style.color = "#e30b21";
+            confSenha.style.color = "#e30b21";
+            console.log("Preencha a confirmação da senha");
+        }else{
+            iConfSenha.style.color = "#00ff00";
+            confSenha.style.color = "#00ff00";
+        }
+        
 
-            finalizarAguardar();
+        if (emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            // cardErro.style.display = "block"
+            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+            // finalizarAguardar();
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            // mensagem_erro.innerHTML = "E-mail inválido! Verifique e tente novamente.";
+            // finalizarAguardar();
+            return false;
         }
+
+        if (senhaVar != confirmacaoSenhaVar) {
+            // mensagem_erro.innerHTML = "As senhas inseridas devem ser iguais para prosseguir!";
+            // finalizarAguardar();
+            return false;
+        }
+
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
+
 
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
@@ -223,38 +330,50 @@
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
+                nomeEmpresaServer: nomeEmpresaVar,
+                enderecoServer: enderecoVar,
+                nomeEstacaoServer: nomeEstacaoVar,
+                cnpjServer: cnpjVar,
+                nomeUsuarioServer: nomeUsuarioVar,
+                cepServer: cepVar,
+                numeroServer: numeroVar,
                 emailServer: emailVar,
-                senhaServer: senhaVar
+                senhaServer: senhaVar,
+                tipoUsuarioServer: 1,
             })
         }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                cardErro.style.display = "block";
+                card2.style.display = "none";
+                container.style.display = "none";
+                sucesso.style.display = "block";
 
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                // cardErro.style.display = "block";
+
+                console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                 setTimeout(() => {
                     window.location = "login.html";
                 }, "2000")
 
-                limparFormulario();
-                finalizarAguardar();
+                // limparFormulario();
+                // finalizarAguardar();
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
+            // finalizarAguardar();
         });
 
         return false;
     }
 
     function sumirMensagem() {
-        cardErro.style.display = "none"
+        // cardErro.style.display = "none"
     }
 
     const inputs = document.querySelectorAll(".input");

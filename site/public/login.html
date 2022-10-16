@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="./css/mobile-style.css">
+    <link rel="stylesheet" href="../css/mobile-style.css">
 </head>
 
 <body>
@@ -117,12 +117,12 @@
 
         if (emailVar == "" || senhaVar == "") {
             // cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             // finalizarAguardar();
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            // setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -149,12 +149,19 @@
 
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.TIPO_USUARIO = json.tipoUsuario;
+                    sessionStorage.FK_EMPRESA = json.fkEmpresa;
                     sessionStorage.ID_USUARIO = json.id;
 
-                    setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
-
+                    if (JSON.stringify(json.tipoUsuario) == 1) {
+                        setTimeout(function () {
+                            window.location = "./Dashboard-gerente/dash-gerente.html";
+                        }, 1000);
+                    } else {
+                        setTimeout(function () {
+                            window.location = "./dashboard-funcionário/dashboard.html";
+                        }, 1000);
+                    }
                 });
 
             } else {
@@ -162,8 +169,8 @@
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
+                    // console.error(texto);
+                    // finalizarAguardar(texto);
                 });
             }
 
@@ -175,7 +182,7 @@
     }
 
     function sumirMensagem() {
-        cardErro.style.display = "none"
+        // cardErro.style.display = "none"
     }
 
     const inputs = document.querySelectorAll(".input");
