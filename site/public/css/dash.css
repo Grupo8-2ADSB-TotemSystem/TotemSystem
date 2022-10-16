@@ -442,6 +442,50 @@ h2 {
     animation-duration:2s;
   }
 
+  /* Formulario-AddTotem */
+
+  .container-formulario{
+    margin-top: 15%;
+    background-color: #ffffff;
+    width: 95%;
+    min-width: 420px;
+    padding: 35px 50px;
+    transform:  translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 10px;
+    box-shadow: 20px 30px 25px  rgba(0,0,0,0.15);
+  }
+
+  .h1-formulario{
+    font-size: 30px;
+    text-align: center;
+    color: #1c093c;
+  }
+
+  .p-formulario{
+    position: relative;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    color: #606060;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .formulario{
+    width: 100%;
+    position: relative;
+    margin: 30px auto 0 auto;
+  }
+
+  .row{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
 
 @media (max-width: 490px) {
     .cardBox {

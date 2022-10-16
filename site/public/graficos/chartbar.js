@@ -1,8 +1,8 @@
-var ctx = document.getElementById('myChart').getContext('2d');
+var ctx = document.getElementById('barril').getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'polarArea',
+    type: 'line',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['Processador', 'Memória RAM', 'Processos', 'Disco', 'Temperatura'],
         datasets: [{
             label: '# of Votes',
             data: [12, 19, 3, 5, 2, 3],

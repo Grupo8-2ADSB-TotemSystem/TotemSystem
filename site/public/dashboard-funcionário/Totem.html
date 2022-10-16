@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Dashboard</title>
+    <title>Totens</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="dash-gerente.html">
+                    <a href="./dashboard.html">
                         <span class="icon">
                             <ion-icon name="stats-chart"></ion-icon>
                         </span>
@@ -34,19 +34,43 @@
                     </a>
                 </li>
                 <li>
-                    <a href="adicionar.html">
+                    <a href="Totem.html">
                         <span class="icon">
                             <ion-icon name="laptop-outline"></ion-icon>
                         </span>
-                        <span class="title">Adicionar Usuário</span>
+                        <span class="title">Totens</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" onclick="limparSessao()">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="archive"></ion-icon>
+                        </span>
+                        <span class="title">Histórico</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adicionartotem.html">
+                        <span class="icon">
+                            <ion-icon name="archive"></ion-icon>
+                        </span>
+                        <span class="title">Adicionar Totem</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reporte.html">
+                        <span class="icon">
+                            <ion-icon name="archive"></ion-icon>
+                        </span>
+                        <span class="title">Reporte Usuário</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
                         <span class="icon">
                             <ion-icon name="log-out"></ion-icon>
                         </span>
-                        <span class="title" >Sair</span>
+                        <span class="title">Sair</span>
                     </a>
                 </li>
             </ul>
@@ -63,6 +87,7 @@
                     <img src="../assets/imgs/download.png" alt="">
                 </div>
             </div>
+            <h1 class="ativo">Totens Ativos</h1>
             <!-- CARDS -->
             <div class="cardBox">
                 <div class="card">
@@ -101,14 +126,41 @@
                         <ion-icon name="build-outline"></ion-icon>
                     </div>
                 </div>
-            </div>
-            <!-- CHART.JS -->
-            <div class="graphBox">
-                <div class="box">
-                    <canvas id="myChart"></canvas>
+                <div class="card">
+                    <div>
+                        <div class="numbers">XX</div>
+                        <div class="cardName">Totens em Manutenção</div>
+                    </div>
+                    <div class="iconBox">
+                        <ion-icon name="build-outline"></ion-icon>
+                    </div>
                 </div>
-                <div class="box">
-                    <canvas id="barril"></canvas>
+                <div class="card">
+                    <div>
+                        <div class="numbers">XX</div>
+                        <div class="cardName">Totens em Manutenção</div>
+                    </div>
+                    <div class="iconBox">
+                        <ion-icon name="build-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">XX</div>
+                        <div class="cardName">Totens em Manutenção</div>
+                    </div>
+                    <div class="iconBox">
+                        <ion-icon name="build-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">XX</div>
+                        <div class="cardName">Totens em Manutenção</div>
+                    </div>
+                    <div class="iconBox">
+                        <ion-icon name="build-outline"></ion-icon>
+                    </div>
                 </div>
             </div>
         </div>
@@ -116,14 +168,6 @@
 
     <script script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"> </script>
     <script script nomodule src="https://unpkg .com/ionicons@5.5.2/dist/ionicons/ionicons.js"> </script>
-
-    
-    
-    <!-- GRÁFICO DE BARRA -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-    <script src="../graficos/chartbar.js"></script>
-    <!-- GRÁFICO POLAR -->
-    <script src="../graficos/chartpolar.js"></script>
 
     <script>
 
@@ -135,8 +179,6 @@
             // finalizarAguardar();
             window.location = "../login.html";
         }
-
-
 
         // Menu Toggle
         let toggle = document.querySelector('.toggle');
@@ -159,6 +201,7 @@
         list.forEach((item) =>
             item.addEventListener('mouseover', activelink));
     </script>
+
 </body>
 
 </html>
