@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Adicionar Totem</title>
+    <title>Histórico</title>
 </head>
 
 <body>
@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="historico.html">
+                    <a href="#">
                         <span class="icon">
                             <ion-icon name="archive"></ion-icon>
                         </span>
@@ -87,51 +87,156 @@
                     <img src="../assets/imgs/download.png" alt="">
                 </div>
             </div>
+            <!-- <h1 class="ativo">Histórico de Dados</h1> -->
             <!-- CARDS -->
+            <div class="table-container">
+                <h1 class="heading">Histórico de Dados</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID Totem</th>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Memória Uso</th>
+                            <th>Memória Disponível</th>
+                            <th>Volume Uso</th>
+                            <th>Volume Disponível</th>
+                            <th>Memória Uso Processo</th>
+                            <th>Processador Uso Processo</th>
+                            <!-- <th>wow</th>
+                            <th>#</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="ID Totem">1</td>
+
+
+                            <td data-label="Data">16/10/2022</td>
+
+
+                            <td data-label="Hora">20:32</td>
+
+
+                            <td data-label="Memória Uso">13.98</td>
+
+
+                            <td data-label="Memória Disponível">33.93</td>
+
+
+                            <td data-label="Volume Uso">78.00</td>
+
+
+                            <td data-label="Volume Disponível">23.43</td>
+
+
+                            <td data-label="Memória Uso Processo">49.12</td>
+
+
+                            <td data-label="Processador Uso Processo">65.75</td>
+
+                            <!-- <td data-label="wow"><span class="text_open">[Open]</span></td>
+
+                            <td data-label="#"><a href="#" class="btn">Pega na minha</a></td> -->
+                        </tr>
+                        <tr>
+                            <td data-label="ID Totem">2</td>
+
+
+                            <td data-label="Data">16/10/2022</td>
+
+
+                            <td data-label="Hora">20:32</td>
+
+
+                            <td data-label="Memória Uso">13.98</td>
+
+
+                            <td data-label="Memória Disponível">33.93</td>
+
+
+                            <td data-label="Volume Uso">78.00</td>
+
+
+                            <td data-label="Volume Disponível">23.43</td>
+
+
+                            <td data-label="Memória Uso Processo">49.12</td>
+
+
+                            <td data-label="Processador Uso Processo">65.75</td>
+
+                            <!-- <td data-label="wow"><span class="text_open">[Open]</span></td>
+
+                            <td data-label="#"><a href="#" class="btn">Pega na minha</a></td> -->
+                        </tr>
+                        <tr>
+                            <td data-label="ID Totem">3</td>
+
+
+                            <td data-label="Data">16/10/2022</td>
+
+
+                            <td data-label="Hora">20:32</td>
+
+
+                            <td data-label="Memória Uso">13.98</td>
+
+
+                            <td data-label="Memória Disponível">33.93</td>
+
+
+                            <td data-label="Volume Uso">78.00</td>
+
+
+                            <td data-label="Volume Disponível">23.43</td>
+
+
+                            <td data-label="Memória Uso Processo">49.12</td>
+
+
+                            <td data-label="Processador Uso Processo">65.75</td>
+
+                            <!-- <td data-label="wow"><span class="text_open">[Open]</span></td>
+
+                            <td data-label="#"><a href="#" class="btn">Pega na minha</a></td> -->
+                        </tr>
+                        <tr>
+                            <td data-label="ID Totem">4</td>
+
+
+                            <td data-label="Data">16/10/2022</td>
+
+
+                            <td data-label="Hora">20:32</td>
+
+
+                            <td data-label="Memória Uso">13.98</td>
+
+
+                            <td data-label="Memória Disponível">33.93</td>
+
+
+                            <td data-label="Volume Uso">78.00</td>
+
+
+                            <td data-label="Volume Disponível">23.43</td>
+
+
+                            <td data-label="Memória Uso Processo">49.12</td>
+
+
+                            <td data-label="Processador Uso Processo">65.75</td>
+
+                            <!-- <td data-label="wow"><span class="text_open">[Open]</span></td>
+
+                            <td data-label="#"><a href="#" class="btn">Pega na minha</a></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <div class="cardBox">
-                <div class="container-formulario">
-                    <h1 class="h1-formulario">Adicione seu Totem</h1>
-                    <p class="p-formulario">Escolha suas configurações</p>
-                    <form class="formulario">
-                        <div class="row">
-                            <div class="column">
-                                <label class="labelform" for="sistema">Sistema Operacional</label>
-                                <input class="inputform" type="text" id="so" name="so"
-                                    placeholder="Sistema Operacional">
-                            </div>
-                            <div class="column">
-                                <label class="labelform" for="estacao">Estação</label>
-                                <input class="inputform" type="text" id="estacao" name="estacao"
-                                    placeholder="Estação do Totem">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="column">
-                                <label class="labelform" for="modelodisco">Modelo do Disco</label>
-                                <input class="inputform" type="text" id="modelodisco" name="modelodisco"
-                                    placeholder="Modelo do Disco">
-                            </div>
-                            <div class="column">
-                                <label class="labelform" for="volumedisco">Volume do Disco</label>
-                                <input class="inputform" type="text" id="volumedisco" name="volumedisco"
-                                    placeholder="Volume do Disco">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="column">
-                                <label class="labelform" for="memoria">Total da Memória</label>
-                                <input class="inputform" type="text" id="totalmemoria" name="totalmemoria"
-                                    placeholder="O Total da Sua Memória">
-                            </div>
-                            <div class="column">
-                                <label class="labelform" for="processador">Memória Disponível</label>
-                                <input class="inputform" type="text" id="memoriadisponivel" name="memoriadisponivel"
-                                    placeholder="A Memória Disponível">
-                            </div>
-                        </div>
-                        <button class="botao-form">Adicionar</button>
-                    </form>
-                </div>
+                
             </div>
         </div>
     </div>
