@@ -19,7 +19,7 @@ function entrar(email, senha) {
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
-async function cadastrarEndereco(numero, cep) {
+function cadastrarEndereco(numero, cep) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", numero, cep);
 
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
@@ -29,8 +29,17 @@ async function cadastrarEndereco(numero, cep) {
     INSERT INTO endereco (numero, cep) VALUES ('${numero}', '${cep}');
 
     `;
+
+    var consultaResultado = `
+
+    SELECT MAX(idEndereco) as maxId FROM endereco;
+
+    `;
+
     console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    database.executar(instrucao)
+    
+    return database.executar(consultaResultado);
 }
 
 function cadastrarEstacao(fkEndereco, nomeEstacao) {
@@ -43,8 +52,16 @@ function cadastrarEstacao(fkEndereco, nomeEstacao) {
     INSERT INTO estacao (fkEndereco, nomeEstacao) VALUES ('${fkEndereco}', '${nomeEstacao}');
 
     `;
+
+    var consultaResultado = `
+
+    SELECT MAX(idEstacao) as maxId FROM estacao;
+
+    `;
     console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    database.executar(instrucao);
+
+    return database.executar(consultaResultado);
 }
 
 function cadastrarEmpresa(fkEstacao, nomeEmpresa, cnpj) {
@@ -57,8 +74,16 @@ function cadastrarEmpresa(fkEstacao, nomeEmpresa, cnpj) {
     INSERT INTO empresa (fkEstacao, nomeEmpresa, cnpj) VALUES ('${fkEstacao}', '${nomeEmpresa}', '${cnpj}');
 
     `;
+
+    var consultaResultado = `
+
+    SELECT MAX(idEmpresa) as maxId FROM empresa;
+
+    `;
     console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    database.executar(instrucao);
+
+    return database.executar(consultaResultado);
 }
 
 function cadastrarUsuario(fkEmpresa, nomeUsuario, email, senha, tipoUsuario) {

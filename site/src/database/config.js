@@ -1,12 +1,12 @@
-var mysql = require("mysql2");
+// var mysql = require("mysql2");
 var sql = require('mssql');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
  var sqlServerConfig = {
-     user: "admin-1adsb-grupo03",
-     password: "#Gfgrupo3",
-     database: "grupo3-agrohcompany",
-     server: "svr-1adsb-grupo3.database.windows.net",
+     user: "admin-totemsystem",
+     password: "Urubu100@",
+     database: "bd-totemsystem",
+     server: "svr-totemsystem.database.windows.net",
      pool: {
          max: 10,
          min: 0,
@@ -18,12 +18,12 @@ var sql = require('mssql');
  }
 
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
-var mySqlConfig = {
-    host: "localhost",
-    user: "root",
-    database: "totembd",
-    password: "urubuadmin100",
-};
+// var mySqlConfig = {
+//     host: "localhost",
+//     user: "root",
+//     database: "totembd",
+//     password: "urubuadmin100",
+// };
 
 function executar(instrucao) {
     // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js
