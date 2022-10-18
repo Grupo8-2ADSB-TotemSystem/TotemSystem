@@ -100,10 +100,10 @@ async function cadastrar(req, res) {
     } else {
 
         try {
-            var cadastroEndereco = await usuarioModel.cadastrarEndereco(numero, cep);
-            var result = JSON.parse(JSON.stringify(cadastroEndereco));
-            fkEndereco = result.insertId;
-        } catch (erro) {
+            var cadastrarEndereco = await usuarioModel.cadastrarEndereco(numero, cep)
+            var resultado = cadastrarEndereco[0].maxId;
+            fkEndereco = resultado;
+        } catch (error) {
             console.log(erro);
             console.log(
                 "\nHouve um erro ao realizar o cadastro! Erro: ",
@@ -114,8 +114,8 @@ async function cadastrar(req, res) {
 
         try {
             var cadastroEstacao = await usuarioModel.cadastrarEstacao(fkEndereco, nomeEstacao);
-            var result = JSON.parse(JSON.stringify(cadastroEstacao));
-            fkEstacao = result.insertId;
+            var resultado = cadastroEstacao[0].maxId;
+            fkEstacao = resultado;
         } catch (erro) {
             console.log(erro);
             console.log(
@@ -127,8 +127,8 @@ async function cadastrar(req, res) {
 
         try {
             var cadastroEmpresa = await usuarioModel.cadastrarEmpresa(fkEstacao, nomeEmpresa, cnpj);
-            var result = JSON.parse(JSON.stringify(cadastroEmpresa));
-            fkEmpresa = result.insertId;
+            var resultado = cadastroEmpresa[0].maxId;
+            fkEmpresa = resultado;
         } catch (erro) {
             console.log(erro);
             console.log(
