@@ -88,3 +88,92 @@ create table dado (
     processadorUsoProcesso double,
     foreign key (fkTotem) references totem(idTotem)
 );
+
+
+-- SCRIPT AZUREEE --
+create table endereco (
+    idEndereco int primary key identity(1,1),
+    cep char(8) not null,
+    numero int not null
+);
+
+create table estacao(
+	idEstacao int primary key identity(1,1),
+    fkEndereco int,
+	nomeEstacao varchar(45),
+    foreign key (fkEndereco) references endereco(idEndereco)
+);
+
+create table empresa(
+    idEmpresa int primary key identity(1,1),
+    fkEstacao int,
+    nomeEmpresa varchar(45),
+    cnpj char(14),
+    foreign key (fkEstacao) references estacao(idEstacao)
+);
+
+create table usuario(
+    idUsuario int identity(1,1),
+    fkEmpresa int,
+    primary key (idUsuario, fkEmpresa),
+    nomeUsuario varchar(45),
+    email varchar(60),
+    senha varchar(50),
+    tipoUsuario int,
+    foreign key (fkEmpresa) references empresa(idEmpresa)
+);
+
+create table totem (
+    idTotem int primary key identity(1,1),
+    fkEstacao int,
+    marca varchar (45),
+    so varchar (45),
+    foreign key (fkEstacao) references estacao(idEstacao)
+);
+
+create table disco (
+    idDisco int identity(1,1),
+    fkTotem int,
+    primary key (idDisco, fkTotem),
+    nome varchar (45),
+    modelo varchar (45),
+    volumeTotal decimal,
+    foreign key (fkTotem) references totem(idTotem)
+);
+
+create table memoria (
+    idMemoria int primary key identity(1,1),
+    fkTotem int,
+    memoriaTotal decimal,
+    foreign key (fkTotem) references totem(idTotem)
+);
+
+create table processador (
+    idProcessador int primary key identity(1,1),
+    fkTotem int,
+    fabricante varchar (45),
+    nome varchar (10),
+    microArq varchar (10),
+    frequencia decimal,
+    foreign key (fkTotem) references totem(idTotem)
+);
+
+create table processo (
+    idProcesso int primary key identity(1,1),
+    fkTotem int,
+    nome varchar(45),
+    foreign key (fkTotem) references totem(idTotem)
+);
+
+create table dado (
+    idDado int identity(1,1),
+    fkTotem int,
+    primary key (idDado, fkTotem),
+    memoriaUso decimal,
+    memoriaDisponivel decimal,
+    volumeUso decimal,
+    volumeDisponivel decimal,
+    memoriaUsoProcesso decimal,
+    processadorUsoProcesso decimal,
+    foreign key (fkTotem) references totem(idTotem)
+);

@@ -18,6 +18,15 @@ function entrar(email, senha) {
     return database.executar(instrucao);
 }
 
+function validarEmail(email) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+        SELECT count(*) as contagem FROM usuario WHERE email = '${email}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 function cadastrarEndereco(numero, cep) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", numero, cep);
@@ -102,6 +111,7 @@ function cadastrarUsuario(fkEmpresa, nomeUsuario, email, senha, tipoUsuario) {
 
 module.exports = {
     entrar,
+    validarEmail,
     cadastrarEndereco,
     cadastrarEstacao,
     cadastrarEmpresa,
