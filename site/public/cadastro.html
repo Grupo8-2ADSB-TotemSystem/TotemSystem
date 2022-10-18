@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                             <div class="input-div pass">
-                                <div id="iCEP"class="i">
+                                <div id="iCEP" class="i">
                                     <i class="fas fa-lock"></i>
                                 </div>
                                 <div class="div">
@@ -191,13 +191,14 @@
 
 </html>
 <script>
-
+    
     var nomeEmpresaVar;
     var enderecoVar;
     var nomeEstacaoVar;
     var cnpjVar;
     var cepVar;
     var numeroVar;
+    var existeEmail = false;
 
     function seguir() {
         nomeEmpresaVar = nomeEmpresa_input.value;
@@ -210,7 +211,7 @@
             iNomeEmpresa.style.color = "#e30b21";
             nomeEmpresa.style.color = "#e30b21";
             console.log("Preencha o nome da empresa");
-        }else{
+        } else {
             iNomeEmpresa.style.color = "#00ff00";
             nomeEmpresa.style.color = "#00ff00";
         }
@@ -218,15 +219,15 @@
             iEstacao.style.color = "#e30b21";
             nomeEstacao.style.color = "#e30b21";
             console.log("Preencha o campo da estação");
-        }else{
+        } else {
             iEstacao.style.color = "#00ff00";
             nomeEstacao.style.color = "#00ff00";
         }
         if (cnpjVar == "") {
             iCNPJ.style.color = "#e30b21";
             cnpj.style.color = "#e30b21";
-            console.log("Preencha o cnpj");  
-        }else{  
+            console.log("Preencha o cnpj");
+        } else {
             iCNPJ.style.color = "#00ff00";
             cnpj.style.color = "#00ff00";
         }
@@ -234,23 +235,23 @@
             iCEP.style.color = "#e30b21";
             cep.style.color = "#e30b21";
             console.log("Preencha o nome da empresa");
-        }else{
+        } else {
             iCEP.style.color = "#00ff00";
             cep.style.color = "#00ff00";
-        } 
+        }
         if (numeroVar == "") {
             iNumero.style.color = "#e30b21";
             numero.style.color = "#e30b21";
             console.log("Preencha o nome da empresa");
-        }else{
+        } else {
             iNumero.style.color = "#00ff00";
             numero.style.color = "#00ff00";
         }
-         if (nomeEmpresaVar != "" && nomeEstacaoVar != "" && cnpjVar != "" && cepVar != "" && numeroVar != "") {
+        if (nomeEmpresaVar != "" && nomeEstacaoVar != "" && cnpjVar != "" && cepVar != "" && numeroVar != "") {
             document.getElementById("card1").style.display = "none";
             document.getElementById("card2").style.display = "block";
         }
-        
+
     }
 
     function cadastrar() {
@@ -263,10 +264,12 @@
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
+        console.log(emailVar);
+
         if (nomeUsuarioVar == "") {
             iNomeUsuario.style.color = "#e30b21";
             nomeUsuario.style.color = "#e30b21";
-        }else{
+        } else {
             iNomeUsuario.style.color = "#00ff00";
             nomeUsuario.style.color = "#00ff00";
         }
@@ -274,15 +277,15 @@
             iEmail.style.color = "#e30b21";
             email.style.color = "#e30b21";
             console.log("Preencha com o seu e-mail");
-        }else{
+        } else {
             iEmail.style.color = "#00ff00";
             email.style.color = "#00ff00";
-        } 
+        }
         if (senhaVar == "") {
             iSenha.style.color = "#e30b21";
             senha.style.color = "#e30b21";
-            console.log("Preencha a senha");  
-        }else{
+            console.log("Preencha a senha");
+        } else {
             iSenha.style.color = "#00ff00";
             senha.style.color = "#00ff00";
         }
@@ -290,11 +293,11 @@
             iConfSenha.style.color = "#e30b21";
             confSenha.style.color = "#e30b21";
             console.log("Preencha a confirmação da senha");
-        }else{
+        } else {
             iConfSenha.style.color = "#00ff00";
             confSenha.style.color = "#00ff00";
         }
-        
+
 
         if (emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
             // cardErro.style.display = "block"
@@ -319,57 +322,56 @@
         //     setInterval(sumirMensagem, 5000)
         // }
 
+        
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeEmpresaServer: nomeEmpresaVar,
+                    enderecoServer: enderecoVar,
+                    nomeEstacaoServer: nomeEstacaoVar,
+                    cnpjServer: cnpjVar,
+                    nomeUsuarioServer: nomeUsuarioVar,
+                    cepServer: cepVar,
+                    numeroServer: numeroVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                    tipoUsuarioServer: 1,
+                })
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    card2.style.display = "none";
+                    container.style.display = "none";
+                    sucesso.style.display = "block";
 
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeEmpresaServer: nomeEmpresaVar,
-                enderecoServer: enderecoVar,
-                nomeEstacaoServer: nomeEstacaoVar,
-                cnpjServer: cnpjVar,
-                nomeUsuarioServer: nomeUsuarioVar,
-                cepServer: cepVar,
-                numeroServer: numeroVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-                tipoUsuarioServer: 1,
-            })
-        }).then(function (resposta) {
+                    // cardErro.style.display = "block";
 
-            console.log("resposta: ", resposta);
+                    console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+                    // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-            if (resposta.ok) {
-                card2.style.display = "none";
-                container.style.display = "none";
-                sucesso.style.display = "block";
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000")
 
-                // cardErro.style.display = "block";
-
-                console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
-                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                setTimeout(() => {
-                    window.location = "login.html";
-                }, "2000")
-
-                // limparFormulario();
+                    // limparFormulario();
+                    // finalizarAguardar();
+                } else if (resposta.status == 409) {
+                    iEmail.style.color = "#e30b21";
+                    email.style.color = "#e30b21";
+                }else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
                 // finalizarAguardar();
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            // finalizarAguardar();
-        });
+            });
 
-        return false;
-    }
+            return false;
+        }
+    
 
     function sumirMensagem() {
         // cardErro.style.display = "none"
