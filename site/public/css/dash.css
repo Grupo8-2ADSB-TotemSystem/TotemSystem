@@ -731,7 +731,7 @@ th,td{
 
 tr:hover td{
     color: #0298cf;
-    transition: 0.3s;
+    transition: 0.2s;
 }  
 
 button .icone-lixo{
