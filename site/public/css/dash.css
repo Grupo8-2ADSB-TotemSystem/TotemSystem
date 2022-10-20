@@ -768,11 +768,43 @@ body {
     opacity: 1;
 }
 
+/* TELA REPORTE */
+
+.linha-reporte{
+    margin-left: 20px;
+    
+}
+.id-reporte{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: left;
+
+}
+.estacao-reporte{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: left;
+
+}
+.texto-reporte{
+    font-size: 1rem;
+    
+}
+
+
 /* RESPONSIVIDADE */
 
 
 
 @media (max-width: 991px) {
+
+    .id-reporte{
+        font-size:calc(1vw + 1.5rem)
+    }
+
+    .texto-reporte{
+        font-size:calc(.5vw + 1rem)
+    }
 
     .table thead {
         display: none;
