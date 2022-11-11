@@ -68,37 +68,42 @@
                     <img style="width: 280px;" src="../assets/business-3d-red-and-white-megaphone.png">
                 </div>
                 <div class="login-content">
-                    <form action="index.html">
+                    <form>
                         <h2 class="title">Suporte Problema</h2>
                         <div class="input-div one">
-                            <div class="i">
-                                <i class="fa-solid fa-train-subway"></i>
-                            </div>
-                            <div class="div">
-                                <h5>Estação</h5>
-                                <input type="text" class="input">
-                            </div>
-                        </div>
-                        <div class="input-div pass">
-                            <div class="i">
+                            <div id="iTotem" class="i">
                                 <i class="fa-sharp fa-solid fa-id-badge"></i>
                             </div>
                             <div class="div">
-                                <h5>Totem-id</h5>
-                                <input type="password" class="input">
+                                <h5 id="nomeTotemProblema">Totem-ID</h5>
+                                <input id="totemProblema_input" type="number" class="input">
                             </div>
                         </div>
                         <div class="input-div pass">
-                            <div class="i">
-                                <i class="fa-solid fa-location-pin"></i>
+                            <div id="iEstacao" class="i">
+                                <i  class="fa-solid fa-train-subway"></i>
                             </div>
                             <div class="div">
-                                <h5>Localização</h5>
-                                <input type="password" class="input">
+                                <h5 id="nomeEstacao">Estação</h5>
+                                <!-- <select name="" id="">
+                                    <option value=""></option>
+                                </select> -->
+                                <input id="estacaoProblema_input" type="text" class="input">
                             </div>
                         </div>
-
-                        <input type="submit" class="button" value="Enviar">
+                        <div class="input-div pass">
+                            <div id="iProblema" class="i">
+                                <i class="fas fa-exclamation"></i>
+                            </div>
+                            <div class="div">
+                                <h5 id="descricaoProblema">Escreva seu problema</h5>
+                                <input id="descricaoProblema_input" type="text" class="input">
+                                <!-- <textarea name="" id="" cols="30" rows="1"></textarea> -->
+                            </div>
+                        </div>
+                        
+                        
+                        <input onclick="reporte()" type="button" class="button" value="Enviar">
                     </form>
                 </div>
             </div>
@@ -108,14 +113,18 @@
 
 </html>
 <script>
+    var totemProblemaVar = totemProblema_input.value;
+    var estacaoProblemaVar = estacaoProblema_input.value;
+    var descricaoProblemaVar = descricaoProblema_input.value;
+    
     const inputs = document.querySelectorAll(".input");
-
-
+    
+    
     function addcl() {
         let parent = this.parentNode.parentNode;
         parent.classList.add("focus");
     }
-
+    
     function remcl() {
         let parent = this.parentNode.parentNode;
         if (this.value == "") {
@@ -128,5 +137,27 @@
         input.addEventListener("focus", addcl);
         input.addEventListener("blur", remcl);
     });
+    
+    function reporte(){
 
+        if (totemProblemaVar == "") {
+            nomeTotemProblema.style.color = "#e30b21";
+            iTotem.style.color = "#e30b21";
+            console.log("Preencha o idTotem");
+        }else{
+            nomeTotemProblema.style.color = "#00ff00";
+            iTotem.style.color = "#00ff00";
+        }
+        if (estacaoProblemaVar == "") {
+            nomeEstacao.style.color = "#e30b21";
+            iEstacao.style.color = "#e30b21";
+            console.log("Preencha o idTotem");
+        }
+        if (descricaoProblemaVar == "") {
+            descricaoProblema.style.color = "#e30b21";
+            iProblema.style.color = "#e30b21";
+            console.log("Preencha o idTotem");
+        }
+    }
+    
 </script>
