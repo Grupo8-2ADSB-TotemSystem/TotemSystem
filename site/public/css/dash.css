@@ -188,7 +188,7 @@ body {
     width: 100%;
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 30px;
 }
 
@@ -237,7 +237,7 @@ body {
     position: relative;
     width: 100%;
     padding: 20px;
-    display: grid;
+    display: flex;
     grid-template-columns: 1fr 2fr;
     grid-gap: 30px;
     min-height: 200px;
@@ -251,6 +251,21 @@ body {
     display: grid;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
+}
+
+.kpi{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.legendaKPI{
+    margin-top: 5%;
+    margin-left: 48%;
 }
 
 /* PÁGINA TOTEM */
@@ -332,6 +347,8 @@ input:focus {
     color: #ffffff;
     border-radius: 3px;
 }
+
+
 
 /* ADICIONAR DEPENDENTES */
 
@@ -744,6 +761,10 @@ button .icone-lixo{
 
 }
 
+.cards-dash{
+    left: 10%;
+}
+
 td button:nth-child(1){
     background-color: #f80000;
 }
@@ -793,6 +814,9 @@ td button:nth-child(1){
 
 
 @media (max-width: 991px) {
+    .legendaKPI{
+        margin-left: 40%;
+    }
 
     .id-reporte{
         font-size:calc(1vw + 1.5rem)
@@ -868,6 +892,10 @@ td button:nth-child(1){
 }
 
 @media (max-width: 490px) {
+    .legendaKPI{
+        margin-left: 40%;
+    }
+
     .container-formulario {
         margin-top: 95%;
     }

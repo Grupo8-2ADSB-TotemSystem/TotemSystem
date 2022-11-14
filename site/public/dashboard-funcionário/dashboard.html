@@ -34,14 +34,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Totem.html">
-                        <span class="icon">
-                            <ion-icon name="laptop-outline"></ion-icon>
-                        </span>
-                        <span class="title">Totens</span>
-                    </a>
-                </li>
-                <li>
                     <a href="historico.html">
                         <span class="icon">
                             <ion-icon name="archive"></ion-icon>
@@ -87,13 +79,13 @@
                     <img src="../assets/imgs/download.png" alt="">
                 </div>
             </div>
-            <h1 class="ativo">Dados em Geral</h1>
+            <h1 id="titulo" class="ativo">Dados em Geral</h1>
             <!-- CARDS -->
-            <div class="cardBox">
+            <div class="cardBox" id="cardBox1">
                 <div class="card">
                     <div>
                         <div class="numbers">XX</div>
-                        <div class="cardName">Totens Funcionando</div>
+                        <div class="cardName">Totens alerta</div>
                     </div>
                     <div class="iconBox">
                         <ion-icon name="checkmark-circle-outline"></ion-icon>
@@ -102,7 +94,7 @@
                 <div class="card">
                     <div>
                         <div class="numbers">XX</div>
-                        <div class="cardName">Totens Danificados</div>
+                        <div class="cardName">Totens Funcionando</div>
                     </div>
                     <div class="iconBox">
                         <ion-icon name="warning-outline"></ion-icon>
@@ -117,24 +109,39 @@
                         <ion-icon name="battery-dead-outline"></ion-icon>
                     </div>
                 </div>
-                <div class="card">
+            </div>
+            <div class="cardBox" id="cardBox2">
+                <div onclick="ativarTotem()" class="card">
                     <div>
-                        <div class="numbers">XX</div>
-                        <div class="cardName">Totens em Manutenção</div>
+                        <div class="numbers">Totem 1</div>
+
                     </div>
                     <div class="iconBox">
                         <ion-icon name="build-outline"></ion-icon>
                     </div>
                 </div>
             </div>
-            <div class="graphBox">
+            <div class="graphBox" id="graficoBox" style="display: none;">
+                <h1 class="legendaKPI">CPU</h1>
+                <div class="kpi">
+                    <h3>30% - 60%</h3>
+                    <h3>60% - 90%</h3>
+                    <h3>90%</h3>
+                </div>
                 <div class="box">
                     <canvas id="myChart"></canvas>
+                </div>
+                <h1 class="legendaKPI">Disco</h1>
+                <div class="kpi">
+                    <h3>00% - 00%</h3>
+                    <h3>00% - 00%</h3>
+                    <h3>00% - 00%</h3>
                 </div>
                 <div class="box">
                     <canvas id="barril"></canvas>
                 </div>
             </div>
+
         </div>
     </div>
     </div>
@@ -148,6 +155,8 @@
     <script src="../graficos/chartpolar.js"></script>
 
     <script>
+
+
 
 
         // Menu Toggle
@@ -179,6 +188,23 @@
             // finalizarAguardar();
             window.location = "../login.html";
         }
+
+
+
+        function ativarTotem() {
+            var box1 = document.getElementById("cardBox1");
+            var box2 = document.getElementById("cardBox2");
+            var grafico = document.getElementById("graficoBox");
+            var tituloGraficos = document.getElementById("titulo");
+
+            console.log("pegou")
+
+            box1.style.display = "none";
+            box2.style.display = "none";
+            tituloGraficos.style.display = "none";
+            grafico.style.display = "block";
+        }
+
     </script>
 
 </body>
