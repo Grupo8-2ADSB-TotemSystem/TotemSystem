@@ -4,7 +4,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: ['Processador', 'Memória RAM', 'Processos', 'Disco', 'Temperatura'],
         datasets: [{
-            label: '# of Votes',
+            label: 'Uso de Recursos',
             data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
