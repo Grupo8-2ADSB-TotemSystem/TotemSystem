@@ -121,6 +121,53 @@
                     </div>
                 </div>
             </div>
+
+            <div class="cardBox" id="cardTotem1" style="display: none;">
+                <div class="card">
+                    <div>
+                        <div class="numbers">Verde</div>
+                        <div class="cardName">O totem está em suas perfeitas condições</div>
+                    </div>
+                    <div class="iconBox">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48"
+                            viewBox="0 0 48 48">
+                            <path fill="#4caf50"
+                                d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
+                            <path fill="#ccff90"
+                                d="M34.602,14.602L21,28.199l-5.602-5.598l-2.797,2.797L21,33.801l16.398-16.402L34.602,14.602z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">Amarelo</div>
+                        <div class="cardName">Tome cuidado, algo de errado está por vir</div>
+                    </div>
+                    <div class="iconBox">
+                        <img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADiUlEQVRoge2ZTWhUVxTHf+clY147leCmo2JrCHUywXahDombgk33kWjrQtSVCE3FjXThQhTcCAG/0Iba5UClYk3rvnEhqE1GEaTMTBScFKkmG8UPOsH4jgsDxffu5H3mETC/3Zx77j3/w31z77n3whJLvN9IEoOoYlHOF1GrDygCeYQ1KNm5KC9RHqLUEG4hzijFibIITtzYsRLQcvcqlO9RZw/IJyG7/4NICeGcFCuPomqIlIBe+2IFba+OAvsAO2rwORrAeTL2Edlw52nYzqET0LHCNmAY+DhsXx+mgEHpqV4O0ylwAnqRFjoKJ4ADYZWFQ05TrxyUHbwO5B3ESa922GTtX4CBWNqCM8LLxk75qt7wc7T8HPQiLXxol0hPPMAAWftXvbql1c/RNwE6CicQvklEVjj6yT4a8nOa9xOa+8P+lpik8Cgq26W3MtLMoWkCWu5sx1lWAVZFibz5cNc7v28eq0UZBmCKmUy3fHn3iamx+Seky44RUXzC5Ob2HCPGBHRs/UqUvQunKTT79HbXalODeQbE2Q98sJCKQmLz2ho0NXgSUMVCdffCawqJo7tUvXq9M1DOF4FP09AUCmEtY10b3WZvAmp9nYqgSFh9HovBa1MKSqJhUfSavHQZbIsD1YLbZErAuFwtEjz7kimBj1IQEpXlboN/MbfIMSXwInUVwXnuNpgS+DcFIVHxHP5NB4Ya8HncSDGqz+aIVN0m0wzcSj5yQjiU3SZvAuL8mYqYSDijbovnQKOKxXjhAYutHlIm6al2um/zPDMggoNIKW686xNZ+oc66R/q5MZEAluLSMl0FWneB9Q6C/wXJ97xP3JMP8sw/SzD8Su5OEMBNGh1hk0NxgSk5+/HwM9xoyaH/CQba8blvflO7MwexrDuBuXQ1mly7bPk2mc5tPVx1GEApsi0NT0TB7lWueTnt4AoKtukt/J7M4d5a6G3F61yJnldAVFOzSceghRz9cpBlEuJiQrOFSarP/g5BbvcvfdZG09aL5De/ehlVszulHX3Z/wcA5XTsu7+DPXqt6CnAI0trzmKcpJ6dUcQ8RDlgeOv7gFEh4HYi7uLKVS+m+8e1EToA430VkbI2AXgDG+fh+LSADlNxi6EFQ9JPPI5DILuIWztpEwiUsLix9Qf+TxaFIvx/Ca0pQ+0iEUeZQ3/n69fIDzEYQJkHJxRemq3k3hmXWKJ9503x0/4rsA0qM0AAAAASUVORK5CYII=">
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">Vermelho</div>
+                        <div class="cardName">Verefique seu totem, ele está aparentando um erro critíco</div>
+                    </div>
+                    <div class="iconBox">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48"
+                            viewBox="0 0 48 48">
+                            <path fill="#f44336"
+                                d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
+                            <path fill="#fff" d="M29.656,15.516l2.828,2.828l-14.14,14.14l-2.828-2.828L29.656,15.516z">
+                            </path>
+                            <path fill="#fff" d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
             <div class="graphBox" id="graficoBox" style="display: none;">
                 <h1 class="legendaKPI">CPU</h1>
                 <div class="kpi">
@@ -196,13 +243,15 @@
             var box2 = document.getElementById("cardBox2");
             var grafico = document.getElementById("graficoBox");
             var tituloGraficos = document.getElementById("titulo");
+            var cardTotem = document.getElementById("cardTotem1");
 
             console.log("pegou")
 
+            cardTotem.style.display = "grid";
             box1.style.display = "none";
             box2.style.display = "none";
             tituloGraficos.style.display = "none";
-            grafico.style.display = "block";
+            grafico.style.display = "grid";
         }
 
     </script>
