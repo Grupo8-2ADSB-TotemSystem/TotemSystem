@@ -7,6 +7,10 @@ router.get("/ultimas/:idTotem", function (req, res) {
     medidaController.buscarUltimasMedidas(req, res);
 });
 
+router.get("/totem/:idEmpresa", function (req, res) {
+    medidaController.BuscarTotem(req, res);
+});
+
 router.get("/tempo-real/:idTotem", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })

@@ -98,7 +98,7 @@
                         <div class="ajuste">
                             <a href="cadastro.html">Ainda não é cadastrado? <br> Cadastre-se</a>
                         </div>
-                        <input type="submit" class="button" onclick="entrar()" value="Entrar">
+                        <input type="submit" class="button" onclick="entrar()" ondblclick="buscarTotem()" value="Entrar">
                     </div>
                 </div>
             </div>
@@ -156,6 +156,7 @@
                     if (JSON.stringify(json.tipoUsuario) == 1) {
                         setTimeout(function () {
                             window.location = "./Dashboard-gerente/dash-gerente.html";
+                            
                         }, 1000);
                     } else {
                         setTimeout(function () {

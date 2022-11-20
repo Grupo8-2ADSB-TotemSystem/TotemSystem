@@ -1,11 +1,11 @@
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChartPolar = new Chart(ctx, {
-    type: 'doughnut',
+    type: 'pie',
     data: {
         labels: ['Disco'],
         datasets: [{
             label: 'Uso de Recursos',
-            data: [50],
+            data: [50, 19],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
