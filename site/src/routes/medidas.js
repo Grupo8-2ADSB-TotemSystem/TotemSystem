@@ -7,8 +7,8 @@ router.get("/ultimas/:idTotem", function (req, res) {
     medidaController.buscarUltimasMedidas(req, res);
 });
 
-router.get("/totem/:idEmpresa", function (req, res) {
-    medidaController.BuscarTotem(req, res);
+router.get("/totem/:idEstacao", function (req, res) {
+    medidaController.buscarTotem(req, res);
 });
 
 router.get("/tempo-real/:idTotem", function (req, res) {

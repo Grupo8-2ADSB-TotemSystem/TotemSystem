@@ -110,17 +110,7 @@
                     </div>
                 </div>
             </div>
-            <div class="cardBox" id="cardBox2" onclick="obterDadosGrafico(1)">
-                <div onclick="ativarTotem()" class="card">
-                    <div>
-                        <div class="numbers">Totem 1</div>
-                    </div>
-                    <div class="iconBox">
-                        <ion-icon name="build-outline"></ion-icon>
-                    </div>
-                </div>
-            </div>
-
+            <div id="gerarCard"></div>
             <div class="cardBox" id="cardTotem1" style="display: none;">
                 <div class="card">
                     <div>
@@ -177,7 +167,7 @@
                 <div class="box">
                     <canvas id="myChart"></canvas>
                 </div>
-                <h1 class="legendaKPI">Temperatura</h1>
+                <h1 class="legendaKPI">Processos Totem</h1>
                 <!-- <div class="kpi">
                     <h3>00% - 00%</h3>
                     <h3>00% - 00%</h3>
@@ -202,25 +192,27 @@
 
     <script>
 
-        idEmpresa = sessionStorage.FK_EMPRESA;
+        var idEstacao = sessionStorage.FK_EMPRESA;
 
-        window.onload = function BuscarTotem(idEmpresa) {
-            console.log("Buscando totem");
+        window.onload = function buscarTotem() {
 
-            fetch(`/medidas/totem/${idEmpresa}`).then(function (response) {
+            fetch(`/medidas/totem/${idEstacao}`).then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                        console.log()
-                        plotarGrafico(resposta, idTotem);
+                        criarCard(resposta)
                     });
                 } else {
                     console.error('Nenhum dado encontrado ou erro na API');
                 }
             })
-                .catch(function (error) {
-                    console.error(`Erro na obtenção totem p/ gráfico: ${error.message}`);
-                });
+        }
+
+        function criarCard(resposta) {
+            for (let index = 0; index < resposta.length; index++) {
+                totem = resposta[index].idTotem
+                gerarCard.innerHTML += `<div class="cardBox" id="cardBox2" onclick="obterDadosGrafico(${totem})"><div onclick="ativarTotem()" class="card"><div><div class="numbers">Totem ${totem}</div></div><div class="iconBox"><ion-icon name="build-outline"></ion-icon></div></div></div>`;
+            }
         }
 
         // Menu Toggle
@@ -232,7 +224,6 @@
             navigation.classList.toggle('active');
             main.classList.toggle('active');
         }
-
 
         // adicionando o hover no menu selecionado
         let list = document.querySelectorAll(".navigation li");
@@ -328,7 +319,14 @@
             let dados = {
                 labels: labels,
                 datasets: [{
-                    label: 'Temperatura',
+                    label: 'Processador',
+                    data: [],
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                },],
+                datasets: [{
+                    label: 'Memória em Uso',
                     data: [],
                     fill: false,
                     borderColor: 'rgb(75, 192, 192)',
@@ -344,7 +342,8 @@
             for (i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
                 labels.push(registro.momento_grafico);
-                dados.datasets[0].data.push(registro.temperatura);
+                dados.datasets[0].data.push(registro.processadorUso);
+                // dados.datasets[1].data.push(registro.memoriaUso);
             }
 
             console.log('----------------------------------------------')
@@ -403,9 +402,10 @@
                         dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
                         dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de umidade
-                        // dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
-                        // dados.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                        dados.datasets[0].data.push(novoRegistro[0].processadorUso); // incluir uma nova medida de umidade
+
+                        dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                        dados.datasets[1].data.push(novoRegistro[1].memoriaUso); // incluir uma nova medida de temperatura
 
                         myChart.update();
                         // }
@@ -424,7 +424,6 @@
                 });
 
         }
-
     </script>
 
 </body>

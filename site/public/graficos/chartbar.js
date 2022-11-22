@@ -1,4 +1,4 @@
-var ctx = document.getElementById('barril').getContext('2d');
+var ctx = document.getElementById('barril')
 var myChartBar = new Chart(ctx, {
     type: 'line',
     data: {
