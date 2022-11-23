@@ -5,9 +5,9 @@ function buscarUltimasMedidas(idTotem, limite_linhas) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 7 processadorUso, memoriaUso, FORMAT(data_dado, 'HH:mm:ss') as momento_grafico from dado where fkTotem = ${idTotem} order by idDado desc;`;
+        instrucaoSql = `select top ${limite_linhas} processadorUso, memoriaUso, FORMAT(data_dado, 'HH:mm:ss') as momento_grafico from dado where fkTotem = ${idTotem} order by idDado desc;`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `SELECT top 7 d.processadorUsoProcesso
+        instrucaoSql = `SELECT top ${limite_linhas} d.processadorUsoProcesso
         FROM Totem as t
             INNER JOIN Dado as d    
                 ON d.fkTotem = t.idTotem

@@ -211,7 +211,7 @@
         function criarCard(resposta) {
             for (let index = 0; index < resposta.length; index++) {
                 totem = resposta[index].idTotem
-                gerarCard.innerHTML += `<div class="cardBox" id="cardBox2" onclick="obterDadosGrafico(${totem})"><div onclick="ativarTotem()" class="card"><div><div class="numbers">Totem ${totem}</div></div><div class="iconBox"><ion-icon name="build-outline"></ion-icon></div></div></div>`;
+                gerarCard.innerHTML += `<div class="cardBox" id="cardBox2" onclick="obterDadosGrafico(${totem})"><div onclick="ativarTotem(${totem})" class="card"><div><div class="numbers">Totem ${totem}</div></div><div class="iconBox"><ion-icon name="build-outline"></ion-icon></div></div></div>`;
             }
         }
 
@@ -310,6 +310,7 @@
         // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
         // A função *plotarGrafico* também invoca a função *atualizarGrafico*
         function plotarGrafico(resposta, idTotem) {
+            
             console.log('iniciando plotagem do gráfico...');
 
             // Criando estrutura para plotar gráfico - labels
@@ -318,20 +319,24 @@
             // Criando estrutura para plotar gráfico - dados
             let dados = {
                 labels: labels,
-                datasets: [{
-                    label: 'Processador',
-                    data: [],
-                    fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
-                },],
-                datasets: [{
-                    label: 'Memória em Uso',
-                    data: [],
-                    fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
-                },]
+                datasets: [
+                    {
+                        yAxisID: 'y-Processador',
+                        label: 'Processador em Uso',
+                        borderColor: '#45b3e7',
+                        backgroundColor: '#89cff0',
+                        fill: false,
+                        data: []
+                    },
+                    {
+                        yAxisID: 'y-MemoriaUso',
+                        label: 'Memória em Uso',
+                        borderColor: '#ff3232',
+                        backgroundColor: '#ff7f7f',
+                        fill: false,
+                        data: []
+                    }
+                ]
             };
 
             console.log('----------------------------------------------')
@@ -343,7 +348,7 @@
                 var registro = resposta[i];
                 labels.push(registro.momento_grafico);
                 dados.datasets[0].data.push(registro.processadorUso);
-                // dados.datasets[1].data.push(registro.memoriaUso);
+                dados.datasets[1].data.push(registro.memoriaUso);
             }
 
             console.log('----------------------------------------------')
@@ -368,15 +373,8 @@
 
             setTimeout(() => atualizarGrafico(idTotem, dados, myChart), 2000);
         }
-
-
-        // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-        // buscando a última medida inserida em tabela contendo as capturas, 
-
-        //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-        //     Para ajustar o "select", ajuste o comando sql em src/models
+        
         function atualizarGrafico(idTotem, dados, myChart) {
-
             fetch(`/medidas/tempo-real/${idTotem}`, { cache: 'no-store' }).then(function (response) {
                 if (response.ok) {
                     response.json().then(function (novoRegistro) {
