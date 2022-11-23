@@ -1,5 +1,5 @@
-var ctx = document.getElementById('barril').getContext('2d');
-var myChart = new Chart(ctx, {
+var ctx = document.getElementById('barril')
+var myChartBar = new Chart(ctx, {
     type: 'line',
     data: {
         labels: ['Processador', 'Memória RAM', 'Processos', 'Disco', 'Temperatura'],
