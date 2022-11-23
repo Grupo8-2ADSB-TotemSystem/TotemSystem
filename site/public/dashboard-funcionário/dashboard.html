@@ -81,37 +81,8 @@
             </div>
             <h1 id="titulo" class="ativo">Dados em Geral</h1>
             <!-- CARDS -->
-            <div class="cardBox" id="cardBox1">
-                <div class="card">
-                    <div>
-                        <div class="numbers">XX</div>
-                        <div class="cardName">Totens alerta</div>
-                    </div>
-                    <div class="iconBox">
-                        <ion-icon name="checkmark-circle-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="card">
-                    <div>
-                        <div class="numbers">XX</div>
-                        <div class="cardName">Totens Funcionando</div>
-                    </div>
-                    <div class="iconBox">
-                        <ion-icon name="warning-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="card">
-                    <div>
-                        <div class="numbers">XX</div>
-                        <div class="cardName">Totens Desativados</div>
-                    </div>
-                    <div class="iconBox">
-                        <ion-icon name="battery-dead-outline"></ion-icon>
-                    </div>
-                </div>
-            </div>
-            <div id="gerarCard"></div>
-            <div class="cardBox" id="cardTotem1" style="display: none;">
+
+            <div class="cardBox" id="cardTotem1" style="display: grid;">
                 <div class="card">
                     <div>
                         <div class="numbers">Verde</div>
@@ -156,6 +127,38 @@
                     </div>
                 </div>
             </div>
+
+            <div class="cardBox" id="cardBox1">
+                <div class="card">
+                    <div>
+                        <div class="numbers">XX</div>
+                        <div class="cardName">Totens alerta</div>
+                    </div>
+                    <div class="iconBox">
+                        <ion-icon name="checkmark-circle-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">XX</div>
+                        <div class="cardName">Totens Funcionando</div>
+                    </div>
+                    <div class="iconBox">
+                        <ion-icon name="warning-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">XX</div>
+                        <div class="cardName">Totens Desativados</div>
+                    </div>
+                    <div class="iconBox">
+                        <ion-icon name="battery-dead-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+
+            <div id="gerarCard" class="cardBox" style="display: grid;"></div>
 
             <div class="graphBox" id="graficoBox" style="display: none;">
                 <h1 class="legendaKPI">Disco</h1>
@@ -251,7 +254,7 @@
             var tituloGraficos = document.getElementById("titulo");
             var cardTotem = document.getElementById("cardTotem1");
 
-            cardTotem.style.display = "grid";
+            cardTotem.style.display = "none";
             box1.style.display = "none";
             box2.style.display = "none";
             tituloGraficos.style.display = "none";
