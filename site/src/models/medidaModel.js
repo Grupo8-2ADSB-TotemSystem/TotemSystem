@@ -5,7 +5,7 @@ function buscarUltimasMedidas(idTotem, limite_linhas) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top ${limite_linhas} processadorUso, memoriaUso, FORMAT(data_dado, 'HH:mm:ss') as momento_grafico from dado where fkTotem = ${idTotem} order by idDado desc;`;
+        instrucaoSql = `select top 7 processadorUso, memoriaUso, memoriaDisponivel, FORMAT(data_dado, 'HH:mm:ss') as momento_grafico from dado where fkTotem = ${idTotem} order by idDado desc;`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `SELECT top ${limite_linhas} d.processadorUsoProcesso
         FROM Totem as t
@@ -26,12 +26,12 @@ function buscarUltimasMedidas(idTotem, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal() {
+function buscarMedidasEmTempoReal(idTotem) {
 
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 7 processadorUso, memoriaUso, FORMAT(data_dado, 'HH:mm:ss') as momento_grafico from dado where fkTotem = ${idTotem} order by idDado desc;`;
+        instrucaoSql = `select top 1 processadorUso, memoriaUso, memoriaDisponivel, FORMAT(data_dado, 'HH:mm:ss') as momento_grafico from dado where fkTotem = ${idTotem} order by idDado desc;`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select top 1 processadorUso from dado where temperatura > 3;`;
     } else {

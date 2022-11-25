@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/mobile-style.css">
+    <link rel="stylesheet" href="../css/mobile-style.css">
 
 </head>
 
@@ -81,7 +81,7 @@
                         </div>
                         <div class="input-div pass">
                             <div id="iEstacao" class="i">
-                                <i  class="fa-solid fa-train-subway"></i>
+                                <i class="fa-solid fa-train-subway"></i>
                             </div>
                             <div class="div">
                                 <h5 id="nomeEstacao">Estação</h5>
@@ -101,8 +101,6 @@
                                 <!-- <textarea name="" id="" cols="30" rows="1"></textarea> -->
                             </div>
                         </div>
-                        
-                        
                         <input onclick="reporte()" type="button" class="button" value="Enviar">
                     </form>
                 </div>
@@ -116,15 +114,14 @@
     var totemProblemaVar = totemProblema_input.value;
     var estacaoProblemaVar = estacaoProblema_input.value;
     var descricaoProblemaVar = descricaoProblema_input.value;
-    
+
     const inputs = document.querySelectorAll(".input");
-    
-    
+
     function addcl() {
         let parent = this.parentNode.parentNode;
         parent.classList.add("focus");
     }
-    
+
     function remcl() {
         let parent = this.parentNode.parentNode;
         if (this.value == "") {
@@ -132,19 +129,25 @@
         }
     }
 
+    window.onload = function listarEmpresas() {
+        fetch(`/avisos/listarEmpresas`).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+    }
 
-    inputs.forEach(input => {
-        input.addEventListener("focus", addcl);
-        input.addEventListener("blur", remcl);
-    });
-    
-    function reporte(){
+    function reporte() {
 
         if (totemProblemaVar == "") {
             nomeTotemProblema.style.color = "#e30b21";
             iTotem.style.color = "#e30b21";
             console.log("Preencha o idTotem");
-        }else{
+        } else {
             nomeTotemProblema.style.color = "#00ff00";
             iTotem.style.color = "#00ff00";
         }
@@ -159,5 +162,5 @@
             console.log("Preencha o idTotem");
         }
     }
-    
+
 </script>
