@@ -91,6 +91,7 @@
                             <select name="" id="selectbox">
                                 <option value="">Seleciona a Estação</option>
                             </select>
+
                         </div>
                         <div class="input-div pass">
                             <div id="iProblema" class="i">
@@ -112,6 +113,9 @@
 
 </html>
 <script>
+    var totemProblemaVar = totemProblema_input.value;
+    var estacaoProblemaVar = estacaoProblema_input.value;
+    var descricaoProblemaVar = descricaoProblema_input.value;
 
     const inputs = document.querySelectorAll(".input");
 
@@ -199,5 +203,11 @@
 
         return false;
     }
+    
+    inputs.forEach(input => {
+        input.addEventListener("focus", addcl);
+        input.addEventListener("blur", remcl);
+    });
+
 
 </script>
