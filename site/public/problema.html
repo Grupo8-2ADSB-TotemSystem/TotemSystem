@@ -83,15 +83,14 @@
                             <div id="iEstacao" class="i">
                                 <i class="fa-solid fa-train-subway"></i>
                             </div>
-                            <div class="div">
+                            <!-- <div class="div">
                                 <h5 id="nomeEstacao">Estação</h5>
-                                <select name="" id="">
-                                    <div id="barril">
-
-                                    </div>
-                                </select>
+                                
                                 <input id="estacaoProblema_input" type="text" class="input">
-                            </div>
+                            </div> -->
+                            <select name="" id="selectbox">
+                                <option value="">Seleciona a Estação</option>
+                            </select>
                         </div>
                         <div class="input-div pass">
                             <div id="iProblema" class="i">
@@ -99,7 +98,7 @@
                             </div>
                             <div class="div">
                                 <h5 id="descricaoProblema">Escreva seu problema</h5>
-                                <input id="descricaoProblema_input" type="text" class="input">
+                                <input id="descricaoProblema_input" type="text" class="input" maxlength="255">
                                 <!-- <textarea name="" id="" cols="30" rows="1"></textarea> -->
                             </div>
                         </div>
@@ -134,11 +133,9 @@
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     for (let index = 0; index < resposta.length; index++) {
-                        var nomeEmpresa = resposta[index].nomeEmpresa
+                        var nomeEstacao = resposta[index].nomeEstacao
                         var idEmpresa = resposta[index].idEmpresa
-                        preencherBox(nomeEmpresa, idEmpresa)
-                        console.log(nomeEmpresa)
-                        console.log(idEmpresa)
+                        preencherBox(nomeEstacao, idEmpresa)
                     }
                 });
             } else {
@@ -147,77 +144,60 @@
         })
     }
 
-    function preencherBox(nomeEmpresa, idEmpresa) {
-        barril.innerHTML += `<option value="${idEmpresa}">${nomeEmpresa}</option>`
+    function preencherBox(nomeEstacao, idEmpresa) {
+        selectbox.innerHTML += `<option value="${idEmpresa}">${nomeEstacao}</option>`;
     }
 
-    function cadastrarProblema(idEmpresa) {
+    function reporte() {
 
-        var totemProblemaVar = totemProblema_input.value;
-        var estacaoProblemaVar = estacaoProblema_input.value;
-        var descricaoProblemaVar = descricaoProblema_input.value;
+        // if (totemProblemaVar == "") {
+        //     nomeTotemProblema.style.color = "#e30b21";
+        //     iTotem.style.color = "#e30b21";
+        //     console.log("Preencha o idTotem");
+        // } else {
+        //     nomeTotemProblema.style.color = "#00ff00";
+        //     iTotem.style.color = "#00ff00";
+        // }
+        // if (estacaoProblemaVar == "") {
+        //     nomeEstacao.style.color = "#e30b21";
+        //     iEstacao.style.color = "#e30b21";
+        //     console.log("Preencha o idTotem");
+        // }
+        // if (descricaoProblemaVar == "") {
+        //     descricaoProblema.style.color = "#e30b21";
+        //     iProblema.style.color = "#e30b21";
+        //     console.log("Preencha o idTotem");
+        // }
 
-        fetch("/avisos/cadastroProblema", {
-            method: "POST",
+        var select = document.getElementById('selectbox');
+
+            fetch(`/avisos/publicar`, {
+            method: "post",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                totemProblemaVar: nomeEmpresaVar,
-                estacaoProblemaVar: enderecoVar,
-                descricaoProblemaVar: nomeEstacaoVar,
+                codigoTotemServer: totemProblema_input.value,
+                descricaoProblemaServer: descricaoProblema_input.value,
+                fkEmpresaServer: select.options[select.selectedIndex].value,
             })
         }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
             if (resposta.ok) {
-                card2.style.display = "none";
-                container.style.display = "none";
-                sucesso.style.display = "block";
-
-                // cardErro.style.display = "block";
-
-                console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
-                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
+                console.log("Reporte enviado com sucesso! Redirecionando...");
                 setTimeout(() => {
-                    window.location = "login.html";
+                    window.location = "index.html";
                 }, "2000")
-
-                // limparFormulario();
-                // finalizarAguardar();
-            } else if (resposta.status == 409) {
-                iEmail.style.color = "#e30b21";
-                email.style.color = "#e30b21";
             } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
             }
         }).catch(function (resposta) {
-            // finalizarAguardar();
+            console.log(`#ERRO: ${resposta}`);
         });
 
         return false;
-    }
-
-
-    function reporte() {
-
-        if (totemProblemaVar == "") {
-            nomeTotemProblema.style.color = "#e30b21";
-            iTotem.style.color = "#e30b21";
-            console.log("Preencha o idTotem");
-        } else {
-            nomeTotemProblema.style.color = "#00ff00";
-            iTotem.style.color = "#00ff00";
-        }
-        if (estacaoProblemaVar == "") {
-            nomeEstacao.style.color = "#e30b21";
-            iEstacao.style.color = "#e30b21";
-            console.log("Preencha o idTotem");
-        }
-        if (descricaoProblemaVar == "") {
-            descricaoProblema.style.color = "#e30b21";
-            iProblema.style.color = "#e30b21";
-            console.log("Preencha o idTotem");
-        }
     }
 
 </script>

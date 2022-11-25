@@ -12,21 +12,10 @@ function buscarEmpresas() {
     return database.executar(instrucao);
 }
 
-function listar() {
+function buscarReporte(idEmpresa) {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-        SELECT 
-            a.id AS idAviso,
-            a.titulo,
-            a.descricao,
-            a.fk_usuario,
-            u.id AS idUsuario,
-            u.nome,
-            u.email,
-            u.senha
-        FROM aviso a
-            INNER JOIN usuario u
-                ON a.fk_usuario = u.id;
+        SELECT estacao, mensagem FROM reporte WHERE fkEmpresa = ${idEmpresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -74,11 +63,12 @@ function listarPorUsuario(idUsuario) {
     return database.executar(instrucao);
 }
 
-function publicar(titulo, descricao, idUsuario) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, descricao, idUsuario);
+function publicar(fkEmpresa, descricao, codigoTotem) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", fkEmpresa, descricao, codigoTotem );
     var instrucao = `
-        INSERT INTO aviso (titulo, descricao, fk_usuario) VALUES ('${titulo}', '${descricao}', ${idUsuario});
+        INSERT INTO reporte (estacao, mensagem, fkEmpresa) values ('${codigoTotem}','${descricao}','${fkEmpresa}');
     `;
+    
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
@@ -102,11 +92,11 @@ function deletar(idAviso) {
 }
 
 module.exports = {
-    listar,
     listarPorUsuario,
     pesquisarDescricao,
     publicar,
     editar,
     buscarEmpresas,
+    buscarReporte,
     deletar
 }
