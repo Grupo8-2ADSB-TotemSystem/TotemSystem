@@ -7,6 +7,10 @@ router.get("/", function (req, res) {
     avisoController.testar(req, res);
 });
 
+router.get("/listarEmpresas", function (req, res) {
+    avisoController.listarEmpresas(req, res);
+});
+
 router.get("/listar", function (req, res) {
     avisoController.listar(req, res);
 });
