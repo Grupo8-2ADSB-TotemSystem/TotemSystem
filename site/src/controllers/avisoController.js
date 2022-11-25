@@ -33,29 +33,21 @@ function listar(req, res) {
     });
 }
 
-function listarPorUsuario(req, res) {
-    var idUsuario = req.params.idUsuario;
+function listarReporte(req, res) {
 
-    avisoModel.listarPorUsuario(idUsuario)
-        .then(
-            function (resultado) {
-                if (resultado.length > 0) {
-                    res.status(200).json(resultado);
-                } else {
-                    res.status(204).send("Nenhum resultado encontrado!");
-                }
-            }
-        )
-        .catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "Houve um erro ao buscar os avisos: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+    var idEmpresa = req.params.idEmpresa;
+
+    avisoModel.buscarReporte(idEmpresa).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
 }
 
 function pesquisarDescricao(req, res) {
@@ -80,18 +72,20 @@ function pesquisarDescricao(req, res) {
 }
 
 function publicar(req, res) {
-    var titulo = req.body.titulo;
-    var descricao = req.body.descricao;
-    var idUsuario = req.params.idUsuario;
 
-    if (titulo == undefined) {
-        res.status(400).send("O título está indefinido!");
+    var fkEmpresa = req.body.fkEmpresaServer;
+    var descricao = req.body.descricaoProblemaServer;
+    var codigoTotem = req.body.codigoTotemServer;
+
+    if (codigoTotem == undefined) { 
+        res.status(400).send("O código está indefinido!");
     } else if (descricao == undefined) {
         res.status(400).send("A descrição está indefinido!");
-    } else if (idUsuario == undefined) {
-        res.status(403).send("O id do usuário está indefinido!");
+    } else if (fkEmpresa == "") {
+        res.status(403).send("O id empresa está indefinido!");
     } else {
-        avisoModel.publicar(titulo, descricao, idUsuario)
+
+        avisoModel.publicar(fkEmpresa, descricao, codigoTotem)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -148,10 +142,10 @@ function deletar(req, res) {
 module.exports = {
     testar,
     listar,
-    listarPorUsuario,
     pesquisarDescricao,
     publicar,
     editar,
     listarEmpresas,
+    listarReporte,
     deletar
 }
