@@ -85,9 +85,11 @@
                             </div>
                             <div class="div">
                                 <h5 id="nomeEstacao">Estação</h5>
-                                <!-- <select name="" id="">
-                                    <option value=""></option>
-                                </select> -->
+                                <select name="" id="">
+                                    <div id="barril">
+
+                                    </div>
+                                </select>
                                 <input id="estacaoProblema_input" type="text" class="input">
                             </div>
                         </div>
@@ -111,9 +113,6 @@
 
 </html>
 <script>
-    var totemProblemaVar = totemProblema_input.value;
-    var estacaoProblemaVar = estacaoProblema_input.value;
-    var descricaoProblemaVar = descricaoProblema_input.value;
 
     const inputs = document.querySelectorAll(".input");
 
@@ -131,15 +130,73 @@
 
     window.onload = function listarEmpresas() {
         fetch(`/avisos/listarEmpresas`).then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (resposta) {
-                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    });
-                } else {
-                    console.error('Nenhum dado encontrado ou erro na API');
-                }
-            })
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    for (let index = 0; index < resposta.length; index++) {
+                        var nomeEmpresa = resposta[index].nomeEmpresa
+                        var idEmpresa = resposta[index].idEmpresa
+                        preencherBox(nomeEmpresa, idEmpresa)
+                        console.log(nomeEmpresa)
+                        console.log(idEmpresa)
+                    }
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
     }
+
+    function preencherBox(nomeEmpresa, idEmpresa) {
+        barril.innerHTML += `<option value="${idEmpresa}">${nomeEmpresa}</option>`
+    }
+
+    function cadastrarProblema(idEmpresa) {
+
+        var totemProblemaVar = totemProblema_input.value;
+        var estacaoProblemaVar = estacaoProblema_input.value;
+        var descricaoProblemaVar = descricaoProblema_input.value;
+
+        fetch("/avisos/cadastroProblema", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                totemProblemaVar: nomeEmpresaVar,
+                estacaoProblemaVar: enderecoVar,
+                descricaoProblemaVar: nomeEstacaoVar,
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                card2.style.display = "none";
+                container.style.display = "none";
+                sucesso.style.display = "block";
+
+                // cardErro.style.display = "block";
+
+                console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+
+                // limparFormulario();
+                // finalizarAguardar();
+            } else if (resposta.status == 409) {
+                iEmail.style.color = "#e30b21";
+                email.style.color = "#e30b21";
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            // finalizarAguardar();
+        });
+
+        return false;
+    }
+
 
     function reporte() {
 
