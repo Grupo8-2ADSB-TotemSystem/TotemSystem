@@ -84,13 +84,23 @@
                                 <i class="fa-solid fa-train-subway"></i>
                             </div>
                             <div class="div">
-                                <h5 id="nomeEstacao">Estação</h5>
-                                <select name="" id="">
-                                    <div id="barril">
+                            <!-- <h5 id="nomeEstacao">Estação</h5> -->
+                                <!-- <select name="" id="">
+                                    <option value=""></option>
+                                </select> -->
+                                <!-- <input id="estacaoProblema_input" type="text" class="input"> -->
+                                <div id="estacaoProblema_input" class="selectdiv">
+                                    <label>
+                                        <select>
+                                            <option selected> Escolha a estação </option>
+                                            <div id="estacaoCombo">
 
-                                    </div>
-                                </select>
-                                <input id="estacaoProblema_input" type="text" class="input">
+                                            </div>
+                                        </select>
+                                    </label>
+                                  </div>                                  
+
+
                             </div>
                         </div>
                         <div class="input-div pass">
@@ -113,6 +123,9 @@
 
 </html>
 <script>
+    var totemProblemaVar = totemProblema_input.value;
+    var estacaoProblemaVar = estacaoProblema_input.value;
+    var descricaoProblemaVar = descricaoProblema_input.value;
 
     const inputs = document.querySelectorAll(".input");
 
@@ -196,6 +209,11 @@
 
         return false;
     }
+    
+    inputs.forEach(input => {
+        input.addEventListener("focus", addcl);
+        input.addEventListener("blur", remcl);
+    });
 
 
     function reporte() {
@@ -219,5 +237,6 @@
             console.log("Preencha o idTotem");
         }
     }
-
 </script>
+<script src="./js/jsSelect.js"></script>
+
