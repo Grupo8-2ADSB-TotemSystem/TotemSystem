@@ -161,9 +161,6 @@ async function cadastrar(req, res) {
         }
 }
 
-
-
-
 async function cadastrarDependente(req, res) {
     var nomeUsuario = req.body.nomeUsuarioServer.toUpperCase();
     var email = req.body.emailServer;

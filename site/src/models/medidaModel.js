@@ -52,10 +52,19 @@ function buscarMedidasKpi(idEstacao) {
         t.idTotem,
             (SELECT
                 top 1 d.processadorUso
-                    FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC),
+                    FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as processadorUso,
                     (SELECT
+                top 1 d.memoriaDisponivel
+                    FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as memoriaDisponivel,
+                (SELECT
+                top 1 disc.volumeTotal
+                    FROM disco as disc WHERE fkTotem = t.idTotem ORDER BY idDisco DESC) as processadorUso,
+                     (SELECT
                 top 1 d.memoriaUso
-                    FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC)
+                    FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as "memoriaUso(RAM)",
+                    (SELECT
+                top 1 mem.memoriaTotal
+                    FROM [dbo].[memoria] as mem WHERE fkTotem = t.idTotem ORDER BY idMemoria DESC) as "memoriaDisponivel(RAM)"
             FROM [dbo].[estacao] as e
                 INNER JOIN Empresa as emp
                     ON emp.fkEstacao = e.idEstacao
@@ -63,7 +72,7 @@ function buscarMedidasKpi(idEstacao) {
                                 INNER JOIN Dado as d
                     ON d.fkTotem = t.idTotem
                         WHERE 1=1 and
-                         e.idEstacao = ${idEstacao}
+                         e.idEstacao = 1
                             GROUP BY
                                 e.nomeEstacao,
                                 t.idTotem;`;
@@ -72,10 +81,19 @@ function buscarMedidasKpi(idEstacao) {
         t.idTotem,
             (SELECT
                 top 1 d.processadorUso
-                    FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC),
+                    FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as processadorUso,
                     (SELECT
+                top 1 d.memoriaDisponivel
+                    FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as memoriaDisponivel,
+                (SELECT
+                top 1 disc.volumeTotal
+                    FROM disco as disc WHERE fkTotem = t.idTotem ORDER BY idDisco DESC) as processadorUso,
+                     (SELECT
                 top 1 d.memoriaUso
-                    FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC)
+                    FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as "memoriaUso(RAM)",
+                    (SELECT
+                top 1 mem.memoriaTotal
+                    FROM [dbo].[memoria] as mem WHERE fkTotem = t.idTotem ORDER BY idMemoria DESC) as "memoriaDisponivel(RAM)"
             FROM [dbo].[estacao] as e
                 INNER JOIN Empresa as emp
                     ON emp.fkEstacao = e.idEstacao
@@ -83,7 +101,7 @@ function buscarMedidasKpi(idEstacao) {
                                 INNER JOIN Dado as d
                     ON d.fkTotem = t.idTotem
                         WHERE 1=1 and
-                         e.idEstacao = ${idEstacao}
+                         e.idEstacao = 1
                             GROUP BY
                                 e.nomeEstacao,
                                 t.idTotem; `;
