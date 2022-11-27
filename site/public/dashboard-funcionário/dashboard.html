@@ -234,13 +234,18 @@
                 if (response.ok) {
                     response.json().then(function (resposta) {
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        console.log(resposta)
                     });
                     
                 } else {
                     console.error('Nenhum dado encontrado ou erro na API');
                 }
             })
+
+            setTimeout(() => capturarDados(idEstacao), 10000);
         }
+
+
 
         // Menu Toggle
         let toggle = document.querySelector('.toggle');
