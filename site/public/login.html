@@ -78,20 +78,20 @@
                     <div class="form" action="index.html">
                         <h2 class="title">Bem vindo</h2>
                         <div class="input-div one">
-                            <div class="i">
+                            <div id="iEmail" class="i">
                                 <i class="fas fa-user"></i>
                             </div>
                             <div class="div">
-                                <h5>Email</h5>
+                                <h5 id="nomeEmail">Email</h5>
                                 <input id="email_input" type="text" class="input">
                             </div>
                         </div>
                         <div class="input-div pass">
-                            <div class="i">
+                            <div id="iSenha" class="i">
                                 <i class="fas fa-lock"></i>
                             </div>
                             <div class="div">
-                                <h5>Senha</h5>
+                                <h5 id="nomeSenha">Senha</h5>
                                 <input id="senha_input" type="password" class="input">
                             </div>
                         </div>
@@ -115,14 +115,24 @@
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
-        if (emailVar == "" || senhaVar == "") {
-            // cardErro.style.display = "block"
-            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            // finalizarAguardar();
+        if (emailVar == "" ) {
+            iEmail.style.color = "#e30b21";
+            nomeEmail.style.color = "#e30b21";
             return false;
         }
         else {
-            // setInterval(sumirMensagem, 5000)
+            iEmail.style.color = "#00ff00";
+            nomeEmail.style.color = "#00ff00"; 
+        }
+
+        if (senhaVar == "" ) {
+            iSenha.style.color = "#e30b21";
+            nomeSenha.style.color = "#e30b21";
+            return false;
+        }
+        else {
+            iSenha.style.color = "#00ff00";
+            nomeSenha.style.color = "#00ff00"; 
         }
 
         console.log("FORM LOGIN: ", emailVar);
