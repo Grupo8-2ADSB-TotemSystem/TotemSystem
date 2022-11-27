@@ -160,7 +160,7 @@
 
             <div id="gerarCard" class="cardBox" style="display: grid;"></div>
 
-            <div onclick="voltarPag" class="seta">
+            <div onclick="voltarPag()" class="seta">
                 <button style="display: none;" id="voltarBotao" class="learn-more">
                     <span class="circle" aria-hidden="true">
                         <span class="icon arrow"></span>
@@ -305,12 +305,12 @@
             var voltar = document.getElementById("voltarBotao");
 
 
-            cardTotem.style.display = "block";
-            box1.style.display = "block";
-            box2.style.display = "block";
-            tituloGraficos.style.display = "block";
+            cardTotem.style.display = "grid";
+            box1.style.display = "grid";
+            box2.style.display = "grid";
+            tituloGraficos.style.display = "grid";
             grafico.style.display = "none";
-            gerar.style.display = "block";
+            gerar.style.display = "grid";
             voltar.style.display = "none";
         }
 
