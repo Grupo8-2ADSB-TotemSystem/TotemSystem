@@ -19,7 +19,7 @@ router.get("/listar/reporte/:idEmpresa", function (req, res) {
     avisoController.listarReporte(req, res);
 });
 
-router.get("/deletar/reporte/:idReporte", function (req, res) {
+router.get("/deletarReporte/:idReporte", function (req, res) {
     avisoController.deletarReporte(req, res);
 });
 

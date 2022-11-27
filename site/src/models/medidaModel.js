@@ -50,61 +50,35 @@ function buscarMedidasKpi(idEstacao) {
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `SELECT
         t.idTotem,
-            (SELECT
-                top 1 d.processadorUso
-                    FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as processadorUso,
-                    (SELECT
-                top 1 d.memoriaDisponivel
-                    FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as memoriaDisponivel,
-                (SELECT
-                top 1 disc.volumeTotal
-                    FROM disco as disc WHERE fkTotem = t.idTotem ORDER BY idDisco DESC) as processadorUso,
-                     (SELECT
-                top 1 d.memoriaUso
-                    FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as "memoriaUso(RAM)",
-                    (SELECT
-                top 1 mem.memoriaTotal
-                    FROM [dbo].[memoria] as mem WHERE fkTotem = t.idTotem ORDER BY idMemoria DESC) as "memoriaDisponivel(RAM)"
-            FROM [dbo].[estacao] as e
-                INNER JOIN Empresa as emp
-                    ON emp.fkEstacao = e.idEstacao
-                    INNER JOIN [dbo].[totem] as t on t.fkEstacao = e.idEstacao
-                                INNER JOIN Dado as d
-                    ON d.fkTotem = t.idTotem
-                        WHERE 1=1 and
-                         e.idEstacao = 1
-                            GROUP BY
-                                e.nomeEstacao,
-                                t.idTotem;`;
+        (SELECT top 1 d.processadorUso FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as processadorUso,
+        (SELECT top 1 d.memoriaDisponivel FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as memoriaDisponivel,
+        (SELECT top 1 disc.volumeTotal FROM disco as disc WHERE fkTotem = t.idTotem ORDER BY idDisco DESC) as processadorUso,
+        (SELECT top 1 d.memoriaUso FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as "memoriaUso(RAM)",
+        (SELECT top 1 mem.memoriaTotal FROM memoria as mem WHERE fkTotem = t.idTotem ORDER BY idMemoria DESC) as "memoriaDisponivel(RAM)"
+                FROM [dbo].[estacao] as e
+                    INNER JOIN Empresa as emp ON emp.fkEstacao = e.idEstacao
+                    INNER JOIN totem as t ON t.fkEstacao = e.idEstacao
+                    INNER JOIN Dado as d ON d.fkTotem = t.idTotem
+                            WHERE 1=1 and e.idEstacao = ${idEstacao}
+                                GROUP BY
+                                    e.nomeEstacao,
+                                    t.idTotem; `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `SELECT
         t.idTotem,
-            (SELECT
-                top 1 d.processadorUso
-                    FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as processadorUso,
-                    (SELECT
-                top 1 d.memoriaDisponivel
-                    FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as memoriaDisponivel,
-                (SELECT
-                top 1 disc.volumeTotal
-                    FROM disco as disc WHERE fkTotem = t.idTotem ORDER BY idDisco DESC) as processadorUso,
-                     (SELECT
-                top 1 d.memoriaUso
-                    FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as "memoriaUso(RAM)",
-                    (SELECT
-                top 1 mem.memoriaTotal
-                    FROM [dbo].[memoria] as mem WHERE fkTotem = t.idTotem ORDER BY idMemoria DESC) as "memoriaDisponivel(RAM)"
-            FROM [dbo].[estacao] as e
-                INNER JOIN Empresa as emp
-                    ON emp.fkEstacao = e.idEstacao
-                    INNER JOIN [dbo].[totem] as t on t.fkEstacao = e.idEstacao
-                                INNER JOIN Dado as d
-                    ON d.fkTotem = t.idTotem
-                        WHERE 1=1 and
-                         e.idEstacao = 1
-                            GROUP BY
-                                e.nomeEstacao,
-                                t.idTotem; `;
+        (SELECT top 1 d.processadorUso FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as processadorUso,
+        (SELECT top 1 d.memoriaDisponivel FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as memoriaDisponivel,
+        (SELECT top 1 disc.volumeTotal FROM disco as disc WHERE fkTotem = t.idTotem ORDER BY idDisco DESC) as processadorUso,
+        (SELECT top 1 d.memoriaUso FROM dado as d WHERE fkTotem = t.idTotem ORDER BY idDado DESC) as "memoriaUso(RAM)",
+        (SELECT top 1 mem.memoriaTotal FROM memoria as mem WHERE fkTotem = t.idTotem ORDER BY idMemoria DESC) as "memoriaDisponivel(RAM)"
+                FROM [dbo].[estacao] as e
+                    INNER JOIN Empresa as emp ON emp.fkEstacao = e.idEstacao
+                    INNER JOIN totem as t ON t.fkEstacao = e.idEstacao
+                    INNER JOIN Dado as d ON d.fkTotem = t.idTotem
+                            WHERE 1=1 and e.idEstacao = ${idEstacao}
+                                GROUP BY
+                                    e.nomeEstacao,
+                                    t.idTotem; `;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return database.executar(instrucaoSql);

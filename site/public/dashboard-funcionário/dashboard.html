@@ -87,6 +87,11 @@
                     <div>
                         <div class="numbers">Verde</div>
                         <div class="cardName">O totem está em suas perfeitas condições</div>
+                        <br>
+                        <div>
+                            <div style="font-weight: bold;" class="cardName">Totens Funcionando</div>
+                            <div id="totalTotemFuncionando" class="numbers">0</div>
+                        </div>
                     </div>
                     <div class="iconBox">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48"
@@ -103,6 +108,11 @@
                     <div>
                         <div class="numbers">Amarelo</div>
                         <div class="cardName">Tome cuidado, algo de errado está por vir</div>
+                        <br>
+                        <div>
+                            <div style="font-weight: bold;" class="cardName">Totens alerta</div>
+                            <div id="totalTotemAlerta" class="numbers">0</div>
+                        </div>
                     </div>
                     <div class="iconBox">
                         <img
@@ -112,7 +122,12 @@
                 <div class="card">
                     <div>
                         <div class="numbers">Vermelho</div>
-                        <div class="cardName">Verefique seu totem, ele está aparentando um erro critíco</div>
+                        <div class="cardName">Seu totem está aparentando um erro critíco</div>
+                        <br>
+                        <div>
+                            <div style="font-weight: bold;" class="cardName">Totens Desativados</div>
+                            <div id="kpi_totalTotemParado" class="numbers">0</div>
+                        </div>
                     </div>
                     <div class="iconBox">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48"
@@ -124,36 +139,6 @@
                             <path fill="#fff" d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z">
                             </path>
                         </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cardBox" id="cardBox1">
-                <div class="card">
-                    <div>
-                        <div class="numbers">XX</div>
-                        <div class="cardName">Totens alerta</div>
-                    </div>
-                    <div class="iconBox">
-                        <ion-icon name="checkmark-circle-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="card">
-                    <div>
-                        <div class="numbers">XX</div>
-                        <div class="cardName">Totens Funcionando</div>
-                    </div>
-                    <div class="iconBox">
-                        <ion-icon name="warning-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="card">
-                    <div>
-                        <div class="numbers">XX</div>
-                        <div class="cardName">Totens Desativados</div>
-                    </div>
-                    <div class="iconBox">
-                        <ion-icon name="battery-dead-outline"></ion-icon>
                     </div>
                 </div>
             </div>
@@ -171,20 +156,10 @@
 
             <div class="graphBox" id="graficoBox" style="display: none;">
                 <h1 class="legendaKPI">Disco</h1>
-                <!-- <div class="kpi">
-                    <h3>30% - 60%</h3>
-                    <h3>60% - 90%</h3>
-                    <h3>90%</h3>
-                </div> -->
                 <div class="box">
                     <canvas id="myChart"></canvas>
                 </div>
                 <h1 class="legendaKPI">Processos Totem</h1>
-                <!-- <div class="kpi">
-                    <h3>00% - 00%</h3>
-                    <h3>00% - 00%</h3>
-                    <h3>00% - 00%</h3>
-                </div> -->
                 <div class="box">
                     <canvas id="myChartBar"></canvas>
                 </div>
@@ -220,11 +195,14 @@
             })
         }
 
+        var totalTotensEstacao = 0;
+
         function criarCard(resposta) {
             for (let index = 0; index < resposta.length; index++) {
                 totem = resposta[index].idTotem
                 idEstacao = resposta[index].fkEstacao
-                gerarCard.innerHTML += `<div class="cardBox" id="cardBox2" onclick="obterDadosGrafico(${totem})"><div onclick="ativarTotem(${totem})" class="card"><div><div class="numbers">Totem ${totem}</div></div><div class="iconBox"><ion-icon name="build-outline"></ion-icon></div></div></div>`;
+                totalTotensEstacao++
+                gerarCard.innerHTML += `<div class="cardBox" id="cardBox2" onclick="obterDadosGrafico(${totem})"><div onclick="ativarTotem(${totem})" class="card"><div><div class="numbers">Totem ${totem}</div></div><div class="iconBox"></div></div>`;
                 capturarDados(idEstacao);
             }
         }
@@ -235,6 +213,7 @@
                     response.json().then(function (resposta) {
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                         console.log(resposta)
+                        preencherKPI(resposta)
                     });
                     
                 } else {
@@ -243,6 +222,16 @@
             })
 
             setTimeout(() => capturarDados(idEstacao), 10000);
+        }
+
+        function preencherKPI(resposta) {
+            var totalTotemParado = 0;
+            for (let index = 0; index < resposta.length; index++) {
+                if(totalTotensEstacao > resposta.length){
+                    totalTotemParado++
+                    kpi_totalTotemParado.innerHTML = `${totalTotemParado}`;
+                }
+            }
         }
 
         // Menu Toggle
