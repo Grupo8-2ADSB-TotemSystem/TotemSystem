@@ -129,36 +129,16 @@
             }
         }
 
-        // function deletarReporte(idReporte) {
-        //     fetch(`/avisos/deletar/reporte/${idReporte}`, {
-        //         method: "DELETE",
-        //         headers: {
-        //             "Content-Type": "application/json"
-        //         }
-        //     }).then(function (resposta) {
-
-        //         if (resposta.ok) {
-        //             window.location = "../dashboard-funcionário/reporte.html"
-        //         } else if (resposta.status == 404) {
-        //             window.alert("Deu 404!");
-        //         } else {
-        //             throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-        //         }
-        //     }).catch(function (resposta) {
-        //         console.log(`#ERRO: ${resposta}`);
-        //     });
-        // }
-
         function deletarReporte(idReporte) {  
-            fetch(`/avisos/deletar/reporte/${idReporte}`).then(function (response) {
+            fetch(`/avisos/deletarReporte/${idReporte}`).then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     });
+                    window.location = "../dashboard-funcionário/reporte.html"
                 } else {
                     console.error('Nenhum dado encontrado ou erro na API');
                 }
-                window.location = "../dashboard-funcionário/reporte.html"
             })
         }
 
