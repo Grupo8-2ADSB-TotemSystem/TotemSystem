@@ -214,8 +214,23 @@
         function criarCard(resposta) {
             for (let index = 0; index < resposta.length; index++) {
                 totem = resposta[index].idTotem
+                idEstacao = resposta[index].fkEstacao
                 gerarCard.innerHTML += `<div class="cardBox" id="cardBox2" onclick="obterDadosGrafico(${totem})"><div onclick="ativarTotem(${totem})" class="card"><div><div class="numbers">Totem ${totem}</div></div><div class="iconBox"><ion-icon name="build-outline"></ion-icon></div></div></div>`;
+                capturarDados(idEstacao);
             }
+        }
+
+        function capturarDados(idEstacao) {
+            fetch(`/medidas/buscar-kpi/${idEstacao}`).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    });
+                    
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
         }
 
         // Menu Toggle
@@ -267,11 +282,6 @@
 
         verificar_autenticacao();
 
-        function alterarTitulo(idTotem) {
-            var tituloAquario = document.getElementById("tituloAquario")
-            tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idTotem + "</span>"
-        }
-
         // O gráfico é construído com três funções:
         // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
         // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
@@ -293,9 +303,8 @@
             fetch(`/medidas/ultimas/${idTotem}`, { cache: 'no-store' }).then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
-                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                         resposta.reverse();
-                        console.log()
                         plotarGrafico(resposta, idTotem);
                     });
                 } else {
@@ -312,7 +321,7 @@
         // A função *plotarGrafico* também invoca a função *atualizarGrafico*
         function plotarGrafico(resposta, idTotem) {
 
-            console.log('iniciando plotagem do gráfico...');
+            // console.log('iniciando plotagem do gráfico...');
 
             // Criando estrutura para plotar gráfico - labels
             let labels = [];
@@ -340,9 +349,9 @@
                 ]
             };
 
-            console.log('----------------------------------------------')
-            console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-            console.log(resposta)
+            // console.log('----------------------------------------------')
+            // console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+            // console.log(resposta)
 
             // Inserindo valores recebidos em estrutura para plotar o gráfico
             for (i = 0; i < resposta.length; i++) {
@@ -352,13 +361,13 @@
                 dados.datasets[1].data.push(registro.memoriaUso);
             }
 
-            console.log('----------------------------------------------')
-            console.log('O gráfico será plotado com os respectivos valores:')
-            console.log('Labels:')
-            console.log(labels)
-            console.log('Dados:')
-            console.log(dados.datasets)
-            console.log('----------------------------------------------')
+            // console.log('----------------------------------------------')
+            // console.log('O gráfico será plotado com os respectivos valores:')
+            // console.log('Labels:')
+            // console.log(labels)
+            // console.log('Dados:')
+            // console.log(dados.datasets)
+            // console.log('----------------------------------------------')
 
             // Criando estrutura para plotar gráfico - config
             const config = {
@@ -380,22 +389,16 @@
                 if (response.ok) {
                     response.json().then(function (novoRegistro) {
 
-                        console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                        console.log(`Dados atuais do gráfico:`);
-                        console.log(dados);
+                        // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                        // console.log(`Dados atuais do gráfico:`);
+                        // console.log(dados);
 
                         // document.getElementById("avisoCaptura").innerHTML = ""
 
-                        // if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-                        //     console.log("---------------------------------------------------------------")
-                        //     console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        //     document.getElementById("avisoCaptura").innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                        //     console.log("Horário do novo dado capturado:")
-                        //     console.log(novoRegistro[0].momento_grafico)
-                        //     console.log("Horário do último dado capturado:")
-                        //     console.log(dados.labels[dados.labels.length - 1])
-                        //     console.log("---------------------------------------------------------------")
-                        // } else { 
+                        if (novoRegistro[0].processadorUso >= 95) {
+
+                        }
+
                         dados.labels.shift();
                         dados.labels.push(novoRegistro[0].momento_grafico);
 

@@ -15,4 +15,9 @@ router.get("/tempo-real/:idTotem", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 
+router.get("/buscar-kpi/:idEstacao", function (req, res) {
+    medidaController.buscarMedidasKpi(req, res);
+})
+
+
 module.exports = router;

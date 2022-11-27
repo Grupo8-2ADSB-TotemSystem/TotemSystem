@@ -123,9 +123,43 @@
             for (let index = 0; index < resposta.length; index++) {
                 var codigo = resposta[index].estacao
                 var mensagem = resposta[index].mensagem
+                var idReporte = resposta[index].idReporte
 
-                cardReport.innerHTML += `<div class="card-reporte"><div class="linha-reporte"><h2 class="id-reporte">Código Totem: ${codigo}</h2><br><p class="texto-reporte">${mensagem}</p><br></div></div>`
+                cardReport.innerHTML += `<div class="card-reporte"><div class="linha-reporte"><h2 class="id-reporte">Código Totem: ${codigo}</h2><br><p class="texto-reporte">${mensagem}</p><br><button onclick="deletarReporte(${idReporte})">Deletar</button></div></div>`
             }
+        }
+
+        // function deletarReporte(idReporte) {
+        //     fetch(`/avisos/deletar/reporte/${idReporte}`, {
+        //         method: "DELETE",
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         }
+        //     }).then(function (resposta) {
+
+        //         if (resposta.ok) {
+        //             window.location = "../dashboard-funcionário/reporte.html"
+        //         } else if (resposta.status == 404) {
+        //             window.alert("Deu 404!");
+        //         } else {
+        //             throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+        //         }
+        //     }).catch(function (resposta) {
+        //         console.log(`#ERRO: ${resposta}`);
+        //     });
+        // }
+
+        function deletarReporte(idReporte) {  
+            fetch(`/avisos/deletar/reporte/${idReporte}`).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+                window.location = "../dashboard-funcionário/reporte.html"
+            })
         }
 
         // adicionando o hover no menu selecionado

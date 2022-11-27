@@ -15,7 +15,15 @@ function buscarEmpresas() {
 function buscarReporte(idEmpresa) {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-        SELECT estacao, mensagem FROM reporte WHERE fkEmpresa = ${idEmpresa};
+        SELECT idReporte, estacao, mensagem FROM reporte WHERE fkEmpresa = ${idEmpresa};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function deletarReporte(idReporte) {
+    var instrucao = `
+        DELETE FROM reporte WHERE idReporte = ${idReporte};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -73,15 +81,6 @@ function publicar(fkEmpresa, descricao, codigoTotem) {
     return database.executar(instrucao);
 }
 
-function editar(novaDescricao, idAviso) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ", novaDescricao, idAviso);
-    var instrucao = `
-        UPDATE aviso SET descricao = '${novaDescricao}' WHERE id = ${idAviso};
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-
 function deletar(idAviso) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idAviso);
     var instrucao = `
@@ -95,8 +94,7 @@ module.exports = {
     listarPorUsuario,
     pesquisarDescricao,
     publicar,
-    editar,
     buscarEmpresas,
     buscarReporte,
-    deletar
+    deletarReporte
 }
