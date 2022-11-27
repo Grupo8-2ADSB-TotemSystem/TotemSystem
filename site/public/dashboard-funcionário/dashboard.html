@@ -160,6 +160,15 @@
 
             <div id="gerarCard" class="cardBox" style="display: grid;"></div>
 
+            <div onclick="voltarPag" class="seta">
+                <button style="display: none;" id="voltarBotao" class="learn-more">
+                    <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">Voltar</span>
+                </button>
+            </div>
+
             <div class="graphBox" id="graficoBox" style="display: none;">
                 <h1 class="legendaKPI">Disco</h1>
                 <!-- <div class="kpi">
@@ -253,12 +262,36 @@
             var grafico = document.getElementById("graficoBox");
             var tituloGraficos = document.getElementById("titulo");
             var cardTotem = document.getElementById("cardTotem1");
+            var gerar = document.getElementById("gerarCard");
+            var voltar = document.getElementById("voltarBotao");
+
 
             cardTotem.style.display = "none";
             box1.style.display = "none";
             box2.style.display = "none";
             tituloGraficos.style.display = "none";
             grafico.style.display = "grid";
+            gerar.style.display = "none";
+            voltar.style.display = "block";
+        } 
+
+        function voltarPag() {
+            var box1 = document.getElementById("cardBox1");
+            var box2 = document.getElementById("cardBox2");
+            var grafico = document.getElementById("graficoBox");
+            var tituloGraficos = document.getElementById("titulo");
+            var cardTotem = document.getElementById("cardTotem1");
+            var gerar = document.getElementById("gerarCard");
+            var voltar = document.getElementById("voltarBotao");
+
+
+            cardTotem.style.display = "block";
+            box1.style.display = "block";
+            box2.style.display = "block";
+            tituloGraficos.style.display = "block";
+            grafico.style.display = "none";
+            gerar.style.display = "block";
+            voltar.style.display = "none";
         }
 
         b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
