@@ -90,7 +90,7 @@
                         <br>
                         <div>
                             <div style="font-weight: bold;" class="cardName">Totens Funcionando</div>
-                            <div id="totalTotemFuncionando" class="numbers">0</div>
+                            <div id="kpi_totalTotemFuncionando" class="numbers">0</div>
                         </div>
                     </div>
                     <div class="iconBox">
@@ -111,7 +111,7 @@
                         <br>
                         <div>
                             <div style="font-weight: bold;" class="cardName">Totens alerta</div>
-                            <div id="totalTotemAlerta" class="numbers">0</div>
+                            <div id="kpi_totalTotemAlerta" class="numbers">0</div>
                         </div>
                     </div>
                     <div class="iconBox">
@@ -122,7 +122,7 @@
                 <div class="card">
                     <div>
                         <div class="numbers">Vermelho</div>
-                        <div class="cardName">Seu totem está aparentando um erro critíco</div>
+                        <div class="cardName">Seu totem está desativado ou um erro critíco</div>
                         <br>
                         <div>
                             <div style="font-weight: bold;" class="cardName">Totens Desativados</div>
@@ -215,7 +215,7 @@
                         console.log(resposta)
                         preencherKPI(resposta)
                     });
-                    
+
                 } else {
                     console.error('Nenhum dado encontrado ou erro na API');
                 }
@@ -225,13 +225,32 @@
         }
 
         function preencherKPI(resposta) {
+
             var totalTotemParado = 0;
+            var totalTotemFuncionando = 0;
+            var totalTotemAlerta = 0;
+
             for (let index = 0; index < resposta.length; index++) {
-                if(totalTotensEstacao > resposta.length){
+                var totalDiscoDisponivel = resposta[index].memoriaDisponivel - resposta[index].memoriaTotal
+                var processaorUso = resposta[index].processadorUso
+                var memoriaRamPorcentagem = resposta[index].memoriaRamDisponivel * (90 / 100)
+                var memoriaRamUso = resposta[index].memoriaRamUso
+
+                if (processaorUso > 95 || totalDiscoDisponivel < 40 || memoriaRamUso >= memoriaRamPorcentagem) {
+                    totalTotemAlerta++
+                    kpi_totalTotemAlerta.innerHTML = `${totalTotemAlerta}`;
+                } else {
+                    totalTotemFuncionando++
+                    kpi_totalTotemFuncionando.innerHTML = `${totalTotemFuncionando}`;
+                }
+
+                if (totalTotensEstacao > resposta.length) {
                     totalTotemParado++
                     kpi_totalTotemParado.innerHTML = `${totalTotemParado}`;
                 }
             }
+
+            setTimeout(() => preencherKPI(idEstacao), 5000);
         }
 
         // Menu Toggle
@@ -264,7 +283,7 @@
         }
 
         function ativarTotem() {
-            var box1 = document.getElementById("cardBox1");
+            // var box1 = document.getElementById("cardBox1");
             var box2 = document.getElementById("cardBox2");
             var grafico = document.getElementById("graficoBox");
             var tituloGraficos = document.getElementById("titulo");
@@ -278,9 +297,9 @@
             box2.style.display = "none";
             tituloGraficos.style.display = "none";
             grafico.style.display = "grid";
-            gerar.style.display = "none";
+            gerar.style.display = "block";
             voltar.style.display = "block";
-        } 
+        }
 
         function voltarPag() {
             var box1 = document.getElementById("cardBox1");

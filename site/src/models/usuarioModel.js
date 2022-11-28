@@ -1,9 +1,11 @@
 var database = require("../database/config")
 
-function listar() {
+function listar(idEmpresa) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-        SELECT * FROM usuario;
+    select * from [dbo].[empresa]
+    join [dbo].[usuario] on fkEmpresa = idEmpresa
+        where idEmpresa = ${idEmpresa} and tipoUsuario = 2;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -13,6 +15,15 @@ function entrar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
         SELECT * FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function deletarFuncionario(idUsuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletarFuncionario(): ", idUsuario)
+    var instrucao = `
+        DELETE FROM usuario WHERE idUsuario = ${idUsuario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -47,7 +58,7 @@ function cadastrarEndereco(numero, cep) {
 
     console.log("Executando a instrução SQL: \n" + instrucao);
     database.executar(instrucao)
-    
+
     return database.executar(consultaResultado);
 }
 
@@ -117,4 +128,5 @@ module.exports = {
     cadastrarEmpresa,
     cadastrarUsuario,
     listar,
+    deletarFuncionario
 };
