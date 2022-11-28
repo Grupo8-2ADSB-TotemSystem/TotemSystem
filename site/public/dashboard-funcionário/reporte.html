@@ -130,9 +130,9 @@
                 cardReport.innerHTML += `<div class="main-container">
                 <div class="cards-reporte">
                     <div class="card card-1">
-                        <div onclick="deletarReporte(${idReporte})" class="card__icon"><i
+                        <div class="card__icon"><i
                                 class="fa-solid fa-bullhorn"></i></div>
-                        <p class="card__exit"><i class="fas fa-times"></i></p>
+                        <p class="card__exit"><button style="" onclick="deletarReporte(${idReporte})"><i class="fas fa-times"></i></button></p>
                         <h2 class="card__title">Código Totem: ${codigo}</h2>
                         <p class="card__apply">
                             <a class="card__link" href="#">${mensagem}</a>
@@ -168,7 +168,7 @@
         // }
 
         function deletarReporte(idReporte) {
-            fetch(`/avisos/deletar/reporte/${idReporte}`).then(function (response) {
+            fetch(`/avisos/deletarReporte/${idReporte}`).then(function (response) {
 
                 if (response.ok) {
                     response.json().then(function (resposta) {
