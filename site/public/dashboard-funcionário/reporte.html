@@ -85,6 +85,8 @@
                 <br><br>
                 <div id="cardReport"></div>
             </div>
+            <!-- TESTE -->
+            
         </div>
     </div>
 
@@ -125,9 +127,26 @@
                 var mensagem = resposta[index].mensagem
                 var idReporte = resposta[index].idReporte
 
-                cardReport.innerHTML += `<div class="card-reporte"><div class="linha-reporte"><h2 class="id-reporte">Código Totem: ${codigo}</h2><br><p class="texto-reporte">${mensagem}</p><br><button onclick="deletarReporte(${idReporte})">Deletar</button></div></div>`
+                cardReport.innerHTML += `<div class="main-container">
+                <div class="cards-reporte">
+                    <div class="card card-1">
+                        <div onclick="deletarReporte(${idReporte})" class="card__icon"><i
+                                class="fa-solid fa-bullhorn"></i></div>
+                        <p class="card__exit"><i class="fas fa-times"></i></p>
+                        <h2 class="card__title">Código Totem: ${codigo}</h2>
+                        <p class="card__apply">
+                            <a class="card__link" href="#">${mensagem}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>`
             }
         }
+
+
+        // <div class="card-reporte"><div class="linha-reporte"><h2 class="id-reporte">Código Totem: ${codigo}</h2><br><p class="texto-reporte">${mensagem}</p><br><button class="deletarReporte" onclick="deletarReporte(${idReporte})">Deletar</button></div></div> 
+
+
 
         // function deletarReporte(idReporte) {
         //     fetch(`/avisos/deletar/reporte/${idReporte}`, {
@@ -149,7 +168,7 @@
         //     });
         // }
 
-        function deletarReporte(idReporte) {  
+        function deletarReporte(idReporte) {
             fetch(`/avisos/deletar/reporte/${idReporte}`).then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {

@@ -62,8 +62,19 @@
 
 
         <div class="corpo">
-            <img class="wave" src="../assets/wave.png">
-            <div class="container">
+
+            <div id="sucesso" class="container-sucesso" style="display:none;">
+                <h2 class="title">CADASTRO REALIZADO COM SUCESSO !</h2>
+                <h5>Faça o login para continuar</h5>
+                <div class="wrapper-check"> <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                    </svg>
+                </div>
+            </div>
+
+            <img id="imagemReporte" class="wave" src="../assets/wave.png">
+            <div id="containerReporte" class="container">
                 <div class="img">
                     <img style="width: 280px;" src="../assets/business-3d-red-and-white-megaphone.png">
                 </div>
@@ -156,7 +167,7 @@
 
         var select = document.getElementById('selectbox');
 
-            fetch(`/avisos/publicar`, {
+        fetch(`/avisos/publicar`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
@@ -167,6 +178,10 @@
                 fkEmpresaServer: select.options[select.selectedIndex].value,
             })
         }).then(function (resposta) {
+
+            imagemReporte.style.display = "none";
+            containerReporte.style.display = "none";
+            sucesso.style.display = "block";
 
             console.log("resposta: ", resposta);
 
@@ -184,7 +199,7 @@
 
         return false;
     }
-    
+
     inputs.forEach(input => {
         input.addEventListener("focus", addcl);
         input.addEventListener("blur", remcl);
