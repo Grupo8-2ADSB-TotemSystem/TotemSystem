@@ -34,22 +34,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="historico.html">
-                        <span class="icon">
-                            <ion-icon name="archive"></ion-icon>
-                        </span>
-                        <span class="title">Histórico</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="adicionartotem.html">
-                        <span class="icon">
-                            <ion-icon name="add-circle-outline"></ion-icon>
-                        </span>
-                        <span class="title">Adicionar Totem</span>
-                    </a>
-                </li>
-                <li>
                     <a href="reporte.html">
                         <span class="icon">
                             <ion-icon name="megaphone-outline"></ion-icon>
@@ -155,13 +139,17 @@
             </div>
 
             <div class="graphBox" id="graficoBox" style="display: none;">
-                <h1 class="legendaKPI">Disco</h1>
-                <div class="box">
-                    <canvas id="myChart"></canvas>
+                <div class="box-tittle">
+                    <h1 class="legendaKPI">Disco</h1>
+                    <div class="box">
+                        <canvas id="myChart"></canvas>
+                    </div>
                 </div>
-                <h1 class="legendaKPI">Processos Totem</h1>
-                <div class="box">
-                    <canvas id="myChartBar"></canvas>
+                <div class="box-tittle">
+                    <h1 class="legendaKPI">Processos Totem</h1>
+                    <div class="box">
+                        <canvas id="myChartBar"></canvas>
+                    </div>
                 </div>
             </div>
 
@@ -284,37 +272,37 @@
 
         function ativarTotem() {
             // var box1 = document.getElementById("cardBox1");
-            var box2 = document.getElementById("cardBox2");
+            // var box2 = document.getElementById("cardBox2");
             var grafico = document.getElementById("graficoBox");
-            var tituloGraficos = document.getElementById("titulo");
-            var cardTotem = document.getElementById("cardTotem1");
+            // var tituloGraficos = document.getElementById("titulo");
             var gerar = document.getElementById("gerarCard");
             var voltar = document.getElementById("voltarBotao");
 
+            var cardTotem = document.getElementById("cardTotem1");
 
             cardTotem.style.display = "none";
-            box1.style.display = "none";
-            box2.style.display = "none";
-            tituloGraficos.style.display = "none";
+            // box1.style.display = "none";
+            // box2.style.display = "none";
+            // tituloGraficos.style.display = "none";
             grafico.style.display = "grid";
-            gerar.style.display = "block";
+            gerar.style.display = "none";
             voltar.style.display = "block";
         }
 
         function voltarPag() {
-            var box1 = document.getElementById("cardBox1");
-            var box2 = document.getElementById("cardBox2");
+            // var box1 = document.getElementById("cardBox1");
+            // var box2 = document.getElementById("cardBox2");
             var grafico = document.getElementById("graficoBox");
-            var tituloGraficos = document.getElementById("titulo");
+            // var tituloGraficos = document.getElementById("titulo");
             var cardTotem = document.getElementById("cardTotem1");
             var gerar = document.getElementById("gerarCard");
             var voltar = document.getElementById("voltarBotao");
 
 
             cardTotem.style.display = "grid";
-            box1.style.display = "grid";
-            box2.style.display = "grid";
-            tituloGraficos.style.display = "grid";
+            // box1.style.display = "grid";
+            // box2.style.display = "grid";
+            // tituloGraficos.style.display = "grid";
             grafico.style.display = "none";
             gerar.style.display = "grid";
             voltar.style.display = "none";

@@ -200,7 +200,7 @@ body {
     display: flex;
     justify-content: space-between;
     cursor: pointer;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 1px 12px 25px rgba(0, 0, 0, 0.08);
 }
 
 .cardBox .card .numbers {
@@ -235,13 +235,15 @@ body {
 
 .graphBox {
     position: relative;
-    width: 60%;
+    width: 100%;
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(2fr 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 30px;
-    min-height: 200px;
-    left: 19%;
+    min-height: 80%;
+    left: 20%;
+
+    
 }
 
 .graphBox .box {
@@ -253,6 +255,7 @@ body {
     justify-content: space-between;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
+    /* margin-left: 99%; */
 }
 
 .kpi{
@@ -266,8 +269,19 @@ body {
 }
 
 .legendaKPI{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    left: 25%;
+}
+
+.box-tittle{
+    /* margin-left: 10%; */
     margin-top: 5%;
-    margin-left: 48%;
 }
 
 /* PÁGINA TOTEM */
@@ -363,6 +377,15 @@ h2 {
     padding: 15px 15px;
     width: 100%;
     float: left;
+}
+
+.deletarReporte{
+    position: relative;
+    width: 80%;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    /* left: 25%; */
 }
 
 .wrapper {
@@ -996,6 +1019,7 @@ td button:nth-child(1){
     }
 
     .graphBox {
+
         grid-template-columns: 1fr;
         height: auto;
     }
