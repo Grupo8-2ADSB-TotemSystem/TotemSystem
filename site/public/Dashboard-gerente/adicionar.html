@@ -73,9 +73,12 @@
                             <input type="password" id="confirmacao_senha" class="campo" name="senha"
                                 placeholder="Confirmar Senha">
                         </form>
-                        <input onclick="cadastrarDependente()" type="submit" class="button" value="Adicionar">
+                        <input id="adicionarPerfil" onclick="cadastrarDependente()" type="submit" class="button" value="Adicionar">
+                        <input id="editarPerfil" style="display: none;" onclick="editarDependente()" type="submit" class="button" value="Editar Perfil">
                     </div>
                 </div>
+            </div>
+            <div id="cardUsers">
             </div>
         </div>
     </div>
@@ -110,6 +113,60 @@
 
 </html>
 <script>
+
+    var idEmpresa = sessionStorage.FK_EMPRESA;
+
+    window.onload = function buscarFuncionarios() {
+        fetch(`/usuarios/listar/${idEmpresa}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    criarCard(resposta)
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+    }
+
+    var respostaDaVez = []
+
+    function mudarCard(respostaDaVez) {
+        adicionarPerfil.style.display = "none";
+        editarPerfil.style.display = "block";
+
+        // console.log(respostaDaVez)
+        nome.value = respostaDaVez[0].nomeUsuario
+        // email.value = 
+        // senha.value =
+    }
+    
+    function criarCard(resposta) {
+        for (let index = 0; index < resposta.length; index++) {
+            var nome = resposta[index].nomeUsuario
+            var email = resposta[index].email
+            var idUsuario = resposta[index].idUsuario
+            var respostaUser = resposta[index]
+            respostaDaVez.push(respostaUser)
+
+            cardUsers.innerHTML += `<div style="background-color: gray;" class="cardBox">Nome: ${nome} <br>
+                Email: ${email} <button onclick="mudarCard(${idUsuario})">Editar</button><button onclick="deletarFuncionario(${idUsuario})">Deletar</button></div>`;
+        }
+    }
+    
+    function deletarFuncionario(idUsuario) {  
+            fetch(`/usuarios/deletarFuncionario/${idUsuario}`).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    });
+                    window.location = "adicionar.html"
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+        }
+
     function cadastrarDependente() {
         // aguardar();
 
@@ -202,7 +259,7 @@
                 // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                 setTimeout(() => {
-                    window.location = "dash-gerente.html";
+                    window.location = "adicionar.html";
                 }, "2000")
 
                 // limparFormulario();

@@ -37,7 +37,7 @@ function deletarReporte(req, res) {
 
     var idReporte = req.params.idReporte;
 
-    avisoModel.deletar(idReporte)
+    avisoModel.deletarReporte(idReporte)
     .then(
         function (resultado) {
             res.json(resultado);

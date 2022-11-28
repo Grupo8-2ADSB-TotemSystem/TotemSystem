@@ -9,7 +9,10 @@ function testar(req, res) {
 }
 
 function listar(req, res) {
-    usuarioModel.listar()
+
+    var idEmpresa = req.params.idEmpresa;
+
+    usuarioModel.listar(idEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -23,6 +26,24 @@ function listar(req, res) {
                 res.status(500).json(erro.sqlMessage);
             }
         );
+}
+
+function deletarFuncionario(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    usuarioModel.deletarFuncionario(idUsuario)
+    .then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    )
+    .catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
 }
 
 function entrar(req, res) {
@@ -200,5 +221,6 @@ module.exports = {
     cadastrar,
     cadastrarDependente,
     listar,
-    testar
+    testar,
+    deletarFuncionario
 }
