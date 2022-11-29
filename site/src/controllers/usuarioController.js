@@ -28,22 +28,42 @@ function listar(req, res) {
         );
 }
 
+function buscarPorId(req, res) {
+
+    var idUsuario = req.params.idUsuario;
+
+    usuarioModel.buscarPorId(idUsuario)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function deletarFuncionario(req, res) {
     var idUsuario = req.params.idUsuario;
 
     usuarioModel.deletarFuncionario(idUsuario)
-    .then(
-        function (resultado) {
-            res.json(resultado);
-        }
-    )
-    .catch(
-        function (erro) {
-            console.log(erro);
-            console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
-            res.status(500).json(erro.sqlMessage);
-        }
-    );
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
 }
 
 function entrar(req, res) {
@@ -87,107 +107,107 @@ async function cadastrar(req, res) {
     var email = req.body.emailServer;
 
 
-        var resultado = await usuarioModel.validarEmail(email)
-        if (resultado[0].contagem > 0) {
-            res.status(409).json({ message: "Email ja existe" });
-        } else {
-            var nomeEmpresa = req.body.nomeEmpresaServer.toUpperCase();
-            var nomeEstacao = req.body.nomeEstacaoServer.toUpperCase();
-            var cnpj = req.body.cnpjServer;
-            var nomeUsuario = req.body.nomeUsuarioServer.toUpperCase();
-            var cep = req.body.cepServer;
-            var numero = req.body.numeroServer;
-            var senha = req.body.senhaServer;
-            var tipoUsuario = req.body.tipoUsuarioServer;
-            var fkEndereco;
-            var fkEstacao;
-            var fkEmpresa;
-        
-            function finalizarCadastro(resultado) {
-                res.json(resultado);
-            }
-        
-            if (nomeUsuario == undefined) {
-                res.status(400).send("Seu nome está undefined!");
-            } else if (email == undefined) {
-                res.status(400).send("Seu email está undefined!");
-            } else if (senha == undefined) {
-                res.status(400).send("Sua senha está undefined!");
-            } else if (numero == undefined) {
-                res.status(400).send("Seu número está undefined!");
-            } else if (cep == undefined) {
-                res.status(400).send("Seu CEP está undefined!");
-            } else if (nomeUsuario == undefined) {
-                res.status(400).send("Seu nome do usuário está undefined!");
-            } else if (nomeEstacao == undefined) {
-                res.status(400).send("Seu nome da empresa está undefined!");
-            } else if (cnpj == undefined) {
-                res.status(400).send("Seu CNPJ está undefined!");
-            } else if (nomeEmpresa == undefined) {
-                res.status(400).send("Seu CNPJ está undefined!");
-            } else {
-        
-                try {
-                    var cadastrarEndereco = await usuarioModel.cadastrarEndereco(numero, cep)
-                    var resultado = cadastrarEndereco[0].maxId;
-                    fkEndereco = resultado;
-                } catch (error) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-        
-                try {
-                    var cadastroEstacao = await usuarioModel.cadastrarEstacao(fkEndereco, nomeEstacao);
-                    var resultado = cadastroEstacao[0].maxId;
-                    fkEstacao = resultado;
-                } catch (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-        
-                try {
-                    var cadastroEmpresa = await usuarioModel.cadastrarEmpresa(fkEstacao, nomeEmpresa, cnpj);
-                    var resultado = cadastroEmpresa[0].maxId;
-                    fkEmpresa = resultado;
-                } catch (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-        
-                try {
-                    usuarioModel.cadastrarUsuario(fkEmpresa, nomeUsuario, email, senha, tipoUsuario);
-                } catch (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-        
-                finalizarCadastro();
-            }
+    var resultado = await usuarioModel.validarEmail(email)
+    if (resultado[0].contagem > 0) {
+        res.status(409).json({ message: "Email ja existe" });
+    } else {
+        var nomeEmpresa = req.body.nomeEmpresaServer.toUpperCase();
+        var nomeEstacao = req.body.nomeEstacaoServer.toUpperCase();
+        var cnpj = req.body.cnpjServer;
+        var nomeUsuario = req.body.nomeUsuarioServer.toUpperCase();
+        var cep = req.body.cepServer;
+        var numero = req.body.numeroServer;
+        var senha = req.body.senhaServer;
+        var tipoUsuario = req.body.tipoUsuarioServer;
+        var fkEndereco;
+        var fkEstacao;
+        var fkEmpresa;
+
+        function finalizarCadastro(resultado) {
+            res.json(resultado);
         }
+
+        if (nomeUsuario == undefined) {
+            res.status(400).send("Seu nome está undefined!");
+        } else if (email == undefined) {
+            res.status(400).send("Seu email está undefined!");
+        } else if (senha == undefined) {
+            res.status(400).send("Sua senha está undefined!");
+        } else if (numero == undefined) {
+            res.status(400).send("Seu número está undefined!");
+        } else if (cep == undefined) {
+            res.status(400).send("Seu CEP está undefined!");
+        } else if (nomeUsuario == undefined) {
+            res.status(400).send("Seu nome do usuário está undefined!");
+        } else if (nomeEstacao == undefined) {
+            res.status(400).send("Seu nome da empresa está undefined!");
+        } else if (cnpj == undefined) {
+            res.status(400).send("Seu CNPJ está undefined!");
+        } else if (nomeEmpresa == undefined) {
+            res.status(400).send("Seu CNPJ está undefined!");
+        } else {
+
+            try {
+                var cadastrarEndereco = await usuarioModel.cadastrarEndereco(numero, cep)
+                var resultado = cadastrarEndereco[0].maxId;
+                fkEndereco = resultado;
+            } catch (error) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+
+            try {
+                var cadastroEstacao = await usuarioModel.cadastrarEstacao(fkEndereco, nomeEstacao);
+                var resultado = cadastroEstacao[0].maxId;
+                fkEstacao = resultado;
+            } catch (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+
+            try {
+                var cadastroEmpresa = await usuarioModel.cadastrarEmpresa(fkEstacao, nomeEmpresa, cnpj);
+                var resultado = cadastroEmpresa[0].maxId;
+                fkEmpresa = resultado;
+            } catch (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+
+            try {
+                usuarioModel.cadastrarUsuario(fkEmpresa, nomeUsuario, email, senha, tipoUsuario);
+            } catch (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+
+            finalizarCadastro();
+        }
+    }
 }
 
 async function cadastrarDependente(req, res) {
     var nomeUsuario = req.body.nomeUsuarioServer.toUpperCase();
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var fkEmpresa = req.body.fkEmpresaServer
     var tipoUsuario = req.body.tipoUsuarioServer;
-    var fkEmpresa = req.body.fkEmpresaServer;
 
     function finalizarCadastro(resultado) {
         res.json(resultado);
@@ -216,11 +236,31 @@ async function cadastrarDependente(req, res) {
     }
 }
 
+function atualizarFuncionario(req, res) {
+    var idUsuario = req.params.idUsuario
+    var nomeUsuario = req.body.nomeUsuarioServer.toUpperCase();
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
+
+    try {
+        usuarioModel.atualizarFuncionario(nomeUsuario, email, senha, idUsuario);
+    } catch (erro) {
+        console.log(erro);
+        console.log(
+            "\nHouve um erro ao realizar o cadastro! Erro: ",
+            erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+    }
+}
+
 module.exports = {
     entrar,
     cadastrar,
     cadastrarDependente,
     listar,
     testar,
-    deletarFuncionario
+    deletarFuncionario,
+    buscarPorId,
+    atualizarFuncionario
 }

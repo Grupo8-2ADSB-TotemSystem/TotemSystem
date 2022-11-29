@@ -130,7 +130,7 @@
             <div id="gerarCard" class="cardBox" style="display: grid;"></div>
 
             <div onclick="voltarPag()" class="seta">
-                <button style="display: none;" id="voltarBotao" onclick="capturarDados(idEstacao)" class="learn-more">
+                <button style="display: none;" id="voltarBotao" class="learn-more">
                     <span class="circle" aria-hidden="true">
                         <span class="icon arrow"></span>
                     </span>
@@ -287,7 +287,7 @@
             setTimeout(() => preencherKPI(idEstacao), 5000);
         }
 
-        // Menu Toggle
+        // Menu TogglerespostaDaVez
         let toggle = document.querySelector('.toggle');
         let navigation = document.querySelector('.navigation');
         let main = document.querySelector('.main');
@@ -343,6 +343,7 @@
             var cardTotem = document.getElementById("cardTotem1");
             var gerar = document.getElementById("gerarCard");
             var voltar = document.getElementById("voltarBotao");
+            window.location = "../dashboard-funcionário/dashboard.html"
 
 
             cardTotem.style.display = "grid";
