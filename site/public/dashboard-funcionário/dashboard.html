@@ -173,7 +173,7 @@
                     <p class="card__exit2"></p>
                     <h2 class="card__title2">Sistema Operacional: <br> Marca:</h2>
                     <p class="card__apply2">
-                        <a class="card__link2" href="#">Id Máquina: <br> <button style="display: none;" id="deletarTotem" class="btn-deletarTotem">Deletar Totem</button></a>
+                        <a class="card__link2" href="#">Id Máquina: <br> <button style="display: none;" id="deletarTotem" class="btn-deletarTotem" onclick="deletarTotem(idTotem)">Deletar Totem</button></a>
                     </p>
                 </div>
             </div>
@@ -305,6 +305,20 @@
             }
 
             setTimeout(() => preencherKPI(idEstacao), 5000);
+        }
+
+        function deletarTotem(idTotem) {
+            fetch(`/medidas/deletarTotem/${idTotem}`).then(function (response) {
+
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    });
+                    window.location = "../dashboard-funcionário/reporte.html"
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
         }
 
         // Menu TogglerespostaDaVez

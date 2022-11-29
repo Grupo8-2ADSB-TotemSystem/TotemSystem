@@ -18,6 +18,24 @@ function buscarTotem(req, res) {
     });
 }
 
+function deletarTotem(req, res) {
+    var idTotem = req.params.idTotem;
+
+    usuarioModel.deletarTotem(idTotem)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function buscarUltimasMedidas(req, res) {
 
     const limite_linhas = 7;
@@ -81,6 +99,7 @@ function buscarMedidasKpi(req, res) {
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
+    deletarTotem,
     buscarTotem,
     buscarMedidasKpi
 }

@@ -19,5 +19,9 @@ router.get("/buscar-kpi/:idEstacao", function (req, res) {
     medidaController.buscarMedidasKpi(req, res);
 })
 
+router.get("/deletarTotem/:idTotem", function (req, res) {
+    usuarioController.deletarTotem(req, res);
+})
+
 
 module.exports = router;
