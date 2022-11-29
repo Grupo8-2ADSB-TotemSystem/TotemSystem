@@ -338,7 +338,7 @@ body {
     width: 100%;
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(3, 2fr);
+    grid-template-columns: repeat(2, 2fr);
     grid-gap: 30px;
     min-height: 80%;
     left: 1%;
@@ -514,7 +514,7 @@ h2 {
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    margin-left: 150%;
+    margin-left: 40%;
     min-height: 100%;
 }
 
@@ -1173,7 +1173,7 @@ td button:nth-child(1){
 
 @media (max-width: 991px) {
     .legendaKPI{
-        margin-left: 40%;
+        margin-left: 10%;
     }
 
     .id-reporte{
@@ -1248,11 +1248,17 @@ td button:nth-child(1){
     .cardBox {
         grid-template-columns: repeat(2, 1fr);
     }
+    .cardBox4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .content-login{
+        
+    }
 }
 
 @media (max-width: 490px) {
     .legendaKPI{
-        margin-left: 40%;
+        margin-left: 10%;
     }
 
     .container-formulario {
@@ -1260,6 +1266,9 @@ td button:nth-child(1){
     }
 
     .cardBox {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .cardBox4{
         grid-template-columns: repeat(1, 1fr);
     }
 
@@ -1311,6 +1320,7 @@ td button:nth-child(1){
 
 .seta {
     margin-left: 18px;
+    margin-top: 60px;
 }
 .seta button {
     position: relative;
