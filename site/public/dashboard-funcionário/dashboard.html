@@ -138,6 +138,17 @@
                 </button>
             </div>
 
+            <div style="display: none;" id="informacaoTotem" class="cards-reporte2">
+                <div class="card2 card-12">
+                    <div class="card__icon2"><i class="fa-sharp fa-solid fa-computer"></i></div>
+                    <p class="card__exit2"></p>
+                    <h2 class="card__title2">Sistema Operacional: <br> Marca:</h2>
+                    <p class="card__apply2">
+                        <a class="card__link2" href="#">Id Máquina:</a>
+                    </p>
+                </div>
+            </div>
+
             <div class="graphBox" id="graficoBox" style="display: none;">
                 <div class="box-tittle">
                     <h1 class="legendaKPI">Disco</h1>
@@ -281,6 +292,7 @@
             var voltar = document.getElementById("voltarBotao");
             var deletar = document.getElementById("deletarTotem");
             var cardTotem = document.getElementById("cardTotem1");
+            var informacao = document.getElementById("informacaoTotem");
 
 
             cardTotem.style.display = "none";
@@ -291,6 +303,7 @@
             gerar.style.display = "none";
             voltar.style.display = "block";
             deletar.style.display = "block";
+            informacao.style.display = "block";
         }
 
         function voltarPag() {
