@@ -11,6 +11,10 @@ router.get("/totem/:idEstacao", function (req, res) {
     medidaController.buscarTotem(req, res);
 });
 
+router.get("/deletarTotem/:idTotem", function (req, res) {
+    medidaController.deletarOTotem(req, res);
+})
+
 router.get("/tempo-real/:idTotem", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
@@ -19,9 +23,7 @@ router.get("/buscar-kpi/:idEstacao", function (req, res) {
     medidaController.buscarMedidasKpi(req, res);
 })
 
-router.get("/deletarTotem/:idTotem", function (req, res) {
-    usuarioController.deletarTotem(req, res);
-})
+
 
 
 module.exports = router;

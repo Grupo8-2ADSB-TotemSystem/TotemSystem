@@ -18,10 +18,10 @@ function buscarTotem(req, res) {
     });
 }
 
-function deletarTotem(req, res) {
+function deletarOTotem(req, res) {
     var idTotem = req.params.idTotem;
 
-    usuarioModel.deletarTotem(idTotem)
+    medidaModel.deletarTotem(idTotem)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -99,7 +99,7 @@ function buscarMedidasKpi(req, res) {
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    deletarTotem,
+    deletarOTotem,
     buscarTotem,
     buscarMedidasKpi
 }
