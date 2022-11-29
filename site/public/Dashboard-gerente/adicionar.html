@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" onclick="limparSessao()">
                         <span class="icon">
                             <ion-icon name="log-out"></ion-icon>
                         </span>
@@ -172,9 +172,6 @@
             var respostaUser = resposta[index]
             respostaDaVez.push(respostaUser)
 
-
-
-
             cardUsers.innerHTML += `<div class="main-container2">
   <div class="cards2">
     <div class="card2 card-12">
@@ -265,6 +262,13 @@
         //     setInterval(sumirMensagem, 5000)
         // }
 
+        function limparSessao() {
+            // aguardar();
+            sessionStorage.clear();
+            // finalizarAguardar();
+            window.location = "../login.html";
+        }
+
 
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrarDependente", {
@@ -311,5 +315,12 @@
 
         return false;
     }
+
+    function limparSessao() {
+            // aguardar();
+            sessionStorage.clear();
+            // finalizarAguardar();
+            window.location = "../login.html";
+        }
 
 </script>
