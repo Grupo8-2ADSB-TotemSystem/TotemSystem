@@ -64,12 +64,14 @@
         <div class="corpo">
 
             <div id="sucesso" class="container-sucesso" style="display:none;">
-                <h2 class="title">CADASTRO REALIZADO COM SUCESSO !</h2>
-                <h5>Faça o login para continuar</h5>
-                <div class="wrapper-check"> <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <h2 class="title">REPORTE ENVIADO COM SUCESSO !</h2>
+                <h5>IREMOS AVALIAR SEU PROBLEMA</h5>
+                <div class="wrapper-check"> 
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
                         <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
                         <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
                     </svg>
+                    <!-- <img src="https://www.google.com.br/url?sa=i&url=https%3A%2F%2Fmyloview.com.br%2Fquadro-check-mark-icon-check-mark-icon-vector-check-mark-icon-image-no-DC5621A&psig=AOvVaw2LaVFk7W8Zt-apiv-ocmxb&ust=1669828820883000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCNjjuZrz0_sCFQAAAAAdAAAAABAE" alt=""> -->
                 </div>
             </div>
 
@@ -189,7 +191,7 @@
                 console.log("Reporte enviado com sucesso! Redirecionando...");
                 setTimeout(() => {
                     window.location = "index.html";
-                }, "2000")
+                }, "3000")
             } else {
                 throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
             }
