@@ -84,8 +84,8 @@
                         </form>
                         <input id="adicionarPerfil" onclick="cadastrarDependente()" type="submit" class="button-adc"
                             value="Adicionar">
-                        <input id="editarPerfil" style="display: none;" onclick="editarDependente()" type="submit"
-                            class="button" value="Editar Perfil">
+                        <input id="editarPerfil" style="display: none;" onclick="atualizarFuncionario(idUsuario)"
+                            type="submit" class="button" value="Editar Perfil">
                     </div>
                 </div>
             </div>
@@ -128,7 +128,6 @@
             main.classList.toggle('active');
         }
 
-
         // adicionando o hover no menu selecionado
         let list = document.querySelectorAll(".navigation li");
         function activelink() {
@@ -160,16 +159,62 @@
         })
     }
 
-    var respostaDaVez = []
+    function buscarFuncionarioPorId(idUsuario) {
+        fetch(`/usuarios/buscarPorId/${idUsuario}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    mudarCard(resposta)
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+    }
 
-    function mudarCard(respostaDaVez) {
+    var idUsuario = 0;
+    var emailVar = ""
+    var senhaVar = ""
+    var nomeUsuarioVar = ""
+
+    function mudarCard(resposta) {
         adicionarPerfil.style.display = "none";
         editarPerfil.style.display = "block";
 
-        // console.log(respostaDaVez)
-        nome.value = respostaDaVez[0].nomeUsuario
-        // email.value = 
-        // senha.value =
+        idUsuario = resposta[0].idUsuario
+        nomeUsuarioVar = nome.value = resposta[0].nomeUsuario
+        emailVar = email.value = resposta[0].email
+        senhaVar = senha.value
+    }
+
+    function atualizarFuncionario(idUsuario) {
+        fetch(`/usuarios/atualizarFuncionario/${idUsuario}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeUsuarioServer: nomeUsuarioVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                console.log("Atualizado com sucesso!");
+                setTimeout(() => {
+                    window.location = "adicionar.html";
+                }, "5000")
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
     }
 
     function criarCard(resposta) {
@@ -177,22 +222,20 @@
             var nome = resposta[index].nomeUsuario
             var email = resposta[index].email
             var idUsuario = resposta[index].idUsuario
-            var respostaUser = resposta[index]
-            respostaDaVez.push(respostaUser)
 
             cardUsers.innerHTML += `<div class="main-container2">
-  <div class="cards2">
-    <div class="card2 card-12">
-      <div class="card__icon2"><i class="fa-solid fa-user-plus"></i></div>
-      <h2 class="card__title2">Nome: ${nome} <br>
+                <div class="cards2">
+                    <div class="card2 card-12">
+                    <div class="card__icon2"><i class="fa-solid fa-user-plus"></i></div>
+                    <h2 class="card__title2">Nome: ${nome} <br>
                 Email: ${email}</h2>
-      <p class="card__apply2">
-        <button class="btn-adc" onclick="mudarCard(${idUsuario})">Editar</button>
-        <button class="btn-del" onclick="deletarFuncionario(${idUsuario})">Deletar</button>
-      </p>
-    </div>
-  </div>
-</div>`;
+                <p class="card__apply2">
+                <button class="btn-adc" onclick="buscarFuncionarioPorId(${idUsuario})">Editar</button>
+                <button class="btn-del" onclick="deletarFuncionario(${idUsuario})">Deletar</button>
+                </p>
+                </div>
+            </div>
+            </div>`;
         }
     }
 
@@ -270,13 +313,6 @@
         //     setInterval(sumirMensagem, 5000)
         // }
 
-        function limparSessao() {
-            // aguardar();
-            sessionStorage.clear();
-            // finalizarAguardar();
-            window.location = "../login.html";
-        }
-
 
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrarDependente", {
@@ -325,10 +361,10 @@
     }
 
     function limparSessao() {
-            // aguardar();
-            sessionStorage.clear();
-            // finalizarAguardar();
-            window.location = "../login.html";
-        }
+        // aguardar();
+        sessionStorage.clear();
+        // finalizarAguardar();
+        window.location = "../login.html";
+    }
 
 </script>
