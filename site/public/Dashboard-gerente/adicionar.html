@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/dash.css">
+    <link rel="stylesheet" href="../css/card-adc.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -73,8 +74,10 @@
                             <input type="password" id="confirmacao_senha" class="campo" name="senha"
                                 placeholder="Confirmar Senha">
                         </form>
-                        <input id="adicionarPerfil" onclick="cadastrarDependente()" type="submit" class="button" value="Adicionar">
-                        <input id="editarPerfil" style="display: none;" onclick="editarDependente()" type="submit" class="button" value="Editar Perfil">
+                        <input id="adicionarPerfil" onclick="cadastrarDependente()" type="submit" class="button-adc"
+                            value="Adicionar">
+                        <input id="editarPerfil" style="display: none;" onclick="editarDependente()" type="submit"
+                            class="button" value="Editar Perfil">
                     </div>
                 </div>
             </div>
@@ -83,6 +86,26 @@
         </div>
     </div>
 
+
+
+    <!-- 
+<div class="main-container">
+  <div class="cards">
+    <div class="card card-1">
+      <div class="card__icon"><i class="fa-solid fa-user-plus"></i></div>
+      <h2 class="card__title">Nome: ${nome} <br>
+                Email: ${email}</h2>
+      <p class="card__apply">
+        <button onclick="mudarCard(${idUsuario})">Editar</button>
+        <button onclick="deletarFuncionario(${idUsuario})">Deletar</button>
+      </p>
+    </div>
+  </div>
+</div>
+-->
+
+    <!-- <div style="background-color: gray;" class="cardBox">Nome: ${nome} <br>
+                Email: ${email} <button onclick="mudarCard(${idUsuario})">Editar</button><button onclick="deletarFuncionario(${idUsuario})">Deletar</button></div>-->
     <script script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"> </script>
     <script script nomodule src="https://unpkg .com/ionicons@5.5.2/dist/ionicons/ionicons.js"> </script>
 
@@ -140,7 +163,7 @@
         // email.value = 
         // senha.value =
     }
-    
+
     function criarCard(resposta) {
         for (let index = 0; index < resposta.length; index++) {
             var nome = resposta[index].nomeUsuario
@@ -149,23 +172,37 @@
             var respostaUser = resposta[index]
             respostaDaVez.push(respostaUser)
 
-            cardUsers.innerHTML += `<div style="background-color: gray;" class="cardBox">Nome: ${nome} <br>
-                Email: ${email} <button onclick="mudarCard(${idUsuario})">Editar</button><button onclick="deletarFuncionario(${idUsuario})">Deletar</button></div>`;
+
+
+
+            cardUsers.innerHTML += `<div class="main-container2">
+  <div class="cards2">
+    <div class="card2 card-12">
+      <div class="card__icon2"><i class="fa-solid fa-user-plus"></i></div>
+      <h2 class="card__title2">Nome: ${nome} <br>
+                Email: ${email}</h2>
+      <p class="card__apply2">
+        <button class="btn-adc" onclick="mudarCard(${idUsuario})">Editar</button>
+        <button class="btn-del" onclick="deletarFuncionario(${idUsuario})">Deletar</button>
+      </p>
+    </div>
+  </div>
+</div>`;
         }
     }
-    
-    function deletarFuncionario(idUsuario) {  
-            fetch(`/usuarios/deletarFuncionario/${idUsuario}`).then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (resposta) {
-                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    });
-                    window.location = "adicionar.html"
-                } else {
-                    console.error('Nenhum dado encontrado ou erro na API');
-                }
-            })
-        }
+
+    function deletarFuncionario(idUsuario) {
+        fetch(`/usuarios/deletarFuncionario/${idUsuario}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                });
+                window.location = "adicionar.html"
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+    }
 
     function cadastrarDependente() {
         // aguardar();
