@@ -409,8 +409,9 @@ h2 {
     position: relative;
     padding: 0px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
-    box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
     text-align: center;
+    right: 40%;
 }
 
 .box-login {
@@ -1085,6 +1086,25 @@ td button:nth-child(1){
         right: 0;
         left: 65%;
     }
+}
+
+.button-adc{
+    /* margin-left: 10px; */
+    /* margin-right: 10px; */
+    /* margin-top: 10px; */
+    /* margin-bottom: 10px; */
+    background-color: #83767665;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 10px;
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+.button-adc:hover{
+    background-color: #837676;
+
 }
 
 .seta {
