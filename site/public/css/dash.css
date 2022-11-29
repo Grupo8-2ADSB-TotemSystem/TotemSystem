@@ -7,6 +7,9 @@
 
 :root {
     --blue: #0B0D1B;
+    --dark-blue2: #2325358f;
+    --dark-blue: #232535;
+    --ligth-blue: #3b4fe0;
     --white: #fff;
     --grey: #f5f5f5;
     --black1: #222;
@@ -230,6 +233,55 @@ body {
 .cardBox .card:hover .iconBox {
     color: var(--white);
 }
+.cardBox4 {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+}
+
+.cardBox4 .card4 {
+    transition: 0.3s;
+    position: relative;
+    background: var(--blue);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 1px 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardBox4 .card4 .numbers4 {
+    position: relative;
+    font-weight: 500;
+    font-size: 2.5em;
+    color: var(--white);
+}
+
+.cardBox4 .card4 .cardName4 {
+    color: var(--black2);
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+
+.cardBox4 .card4 .iconBox4 {
+    font-size: 3.5em;
+    color: var(--black2);
+}
+
+.cardBox4 .card4:hover {
+    background: var(--dark-blue);
+}
+
+.cardBox4 .card4:hover .numbers4,
+.cardBox4 .card4:hover .cardName4,
+.cardBox4 .card4:hover .iconBox4 {
+    color: var(--white);
+}
+
 .cardBox3 {
     position: relative;
     width: 100%;
@@ -240,6 +292,7 @@ body {
 }
 
 .cardBox3 .card3 {
+    transition: 0.3s;
     position: relative;
     background: var(--white);
     padding: 30px;
@@ -285,10 +338,10 @@ body {
     width: 100%;
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 2fr);
     grid-gap: 30px;
     min-height: 80%;
-    left: 20%;
+    left: 1%;
 
     
 }
@@ -433,6 +486,25 @@ h2 {
     margin-bottom: 20px;
     margin-top: 20px;
     /* left: 25%; */
+}
+
+.btn-deletarTotem{
+    /* margin-left: 22%; */
+    margin-right: 10px;
+    margin-top: 2%;
+    margin-bottom: 10px;
+    background-color: #f8000065;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 10px;
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+.btn-deletarTotem:hover{
+    background-color: #f80000;
+
 }
 
 .wrapper {
@@ -962,7 +1034,90 @@ td button:nth-child(1){
   /* RESPONSIVE */
   
   @media (max-width: 1600px) {
-    .cards {
+    .cards-reporte {
+      justify-content: center;
+    }
+  }
+  .cards-reporte2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .card2 {
+    margin: 10px;
+    padding: 20px;
+    width: 65%;
+    min-height: 200px;
+    display: grid;
+    grid-template-rows: 20px 50px 1fr 50px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s;
+    margin-left: 20%;
+  }
+  
+  .card2:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(1.01);
+  }
+  
+  .card__link2,
+  .card__exit2,
+  .card__icon2 {
+    position: relative;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.9);
+  }
+  
+  .card__link2::after {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    content: "";
+    width: 0%;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: all 0.5s;
+  }
+  
+  .card__link2:hover::after {
+    width: 100%;
+  }
+  
+  .card__exit2 {
+    grid-row: 1/2;
+    justify-self: end;
+  }
+  
+  .card__icon2 {
+    grid-row: 2/3;
+    font-size: 30px;
+  }
+  
+  .card__title2 {
+    grid-row: 3/4;
+    font-weight: 900;
+    font-size: 20px;
+    color: black;
+  }
+  
+  .card__apply2 {
+    grid-row: 4/5;
+    align-self: center;
+    font-weight: 400;
+  }
+  
+  /* CARD BACKGROUNDS */
+  
+  .card-12 {
+    background: white;
+  }
+  
+  /* RESPONSIVE */
+  
+  @media (max-width: 1600px) {
+    .cards-reporte2 {
       justify-content: center;
     }
   }
