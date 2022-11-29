@@ -130,7 +130,7 @@
             <div id="gerarCard" class="cardBox" style="display: grid;"></div>
 
             <div onclick="voltarPag()" class="seta">
-                <button style="display: none;" id="voltarBotao" class="learn-more">
+                <button style="display: none;" id="voltarBotao" onclick="capturarDados(idEstacao)" class="learn-more">
                     <span class="circle" aria-hidden="true">
                         <span class="icon arrow"></span>
                     </span>
@@ -190,7 +190,8 @@
                 totem = resposta[index].idTotem
                 idEstacao = resposta[index].fkEstacao
                 totalTotensEstacao++
-                gerarCard.innerHTML += `<div class="cardBox" id="cardBox2" onclick="obterDadosGrafico(${totem})"><div onclick="ativarTotem(${totem})" class="card"><div><div class="numbers">Totem ${totem}</div></div><div class="iconBox"></div></div>`;
+                gerarCard.innerHTML += `<div class="cardBox3" id="cardBox2" onclick="obterDadosGrafico(${totem})"><div onclick="ativarTotem(${totem})" class="card3"><div><div class="numbers3">Totem</div>
+                <div class="numbers3" style="font-size: 1.3em">ID: ${totem}</div></div><div class="iconBox3"></div></div>`;
                 capturarDados(idEstacao);
             }
         }

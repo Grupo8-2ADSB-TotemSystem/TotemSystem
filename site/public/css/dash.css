@@ -230,6 +230,53 @@ body {
 .cardBox .card:hover .iconBox {
     color: var(--white);
 }
+.cardBox3 {
+    position: relative;
+    width: 100%;
+    /* padding: 20px; */
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 30px;
+}
+
+.cardBox3 .card3 {
+    position: relative;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 1px 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardBox3 .card3 .numbers3 {
+    position: relative;
+    font-weight: 500;
+    font-size: 2.5em;
+    color: var(--blue);
+}
+
+.cardBox3 .card3 .cardName3 {
+    color: var(--black2);
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+
+.cardBox3 .card3 .iconBox3 {
+    font-size: 3.5em;
+    color: var(--black2);
+}
+
+.cardBox3 .card3:hover {
+    background: var(--blue);
+}
+
+.cardBox3 .card3:hover .numbers3,
+.cardBox3 .card3:hover .cardName3,
+.cardBox3 .card3:hover .iconBox3 {
+    color: var(--white);
+}
 
 /* CHART.JS */
 
